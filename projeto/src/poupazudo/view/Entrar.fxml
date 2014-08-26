@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+
+<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poupazudo.controller.EntrarController">
+   <children>
+      <Pane layoutX="249.0" layoutY="99.0" prefHeight="359.0" prefWidth="299.0">
+         <children>
+            <Label layoutX="33.0" layoutY="55.0" text="Email" />
+            <Label layoutX="33.0" layoutY="125.0" text="Senha" />
+            <TextField fx:id="tfEmail" layoutX="33.0" layoutY="77.0" prefHeight="25.0" prefWidth="234.0" />
+            <Button fx:id="btnEntrar" layoutX="193.0" layoutY="197.0" mnemonicParsing="false" onAction="#efetuarLogin" prefHeight="25.0" prefWidth="74.0" text="Entrar" />
+            <Hyperlink fx:id="hlRecuperarSenha" layoutX="33.0" layoutY="198.0" onAction="#recuperarSenha" text="Esqueceu sua senha?" />
+            <Hyperlink fx:id="hlCriarConta" layoutX="102.0" layoutY="329.0" onAction="#criarConta" text="Criar nova conta" />
+            <PasswordField fx:id="pfSenha" layoutX="33.0" layoutY="147.0" prefHeight="25.0" prefWidth="234.0" />
+         </children>
+      </Pane>
+      <Hyperlink fx:id="hlAjuda" disable="true" layoutX="723.0" layoutY="431.0" onAction="#mostrarAjuda" text="Ajuda?" />
+      <Hyperlink fx:id="hlSair" layoutX="743.0" layoutY="28.0" onAction="#sairDaAplicacao" text="Sair" />
+   </children>
+</Pane>

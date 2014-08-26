@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poupazudo.controller.CriarContaController">
+   <children>
+      <Pane layoutX="169.0" layoutY="57.0" prefHeight="418.0" prefWidth="476.0">
+         <children>
+            <Label layoutX="22.0" layoutY="24.0" text="Nome" />
+            <TextField fx:id="tfNomeDeUsuario" layoutX="21.0" layoutY="44.0" prefHeight="25.0" prefWidth="212.0" />
+            <TextField fx:id="tfEmailDeUsuario" layoutX="22.0" layoutY="107.0" prefHeight="25.0" prefWidth="212.0" />
+            <Label layoutX="23.0" layoutY="87.0" text="Email" />
+            <Label layoutX="24.0" layoutY="152.0" text="Senha" />
+            <Label layoutX="24.0" layoutY="216.0" text="Confirmar senha" />
+            <PasswordField fx:id="pfSenhaSeUsuario" layoutX="23.0" layoutY="172.0" prefHeight="25.0" prefWidth="212.0" />
+            <PasswordField fx:id="pfSenhaDeUsuarioConfirmar" layoutX="23.0" layoutY="236.0" prefHeight="25.0" prefWidth="212.0" />
+            <TextField fx:id="tfDicaDeSenhaDoUsuario" layoutX="23.0" layoutY="298.0" prefHeight="25.0" prefWidth="212.0" />
+            <Label layoutX="23.0" layoutY="278.0" text="Dica de senha" />
+            <Button fx:id="btnCriarContaConfirmar" layoutX="146.0" layoutY="348.0" mnemonicParsing="false" onAction="#criarNovoUsuario" prefHeight="25.0" prefWidth="87.0" text="Criar conta" />
+            <Label fx:id="lbTooltipEmail" layoutX="286.0" layoutY="111.0" text="Email já associado a uma conta" textFill="RED" />
+            <Label fx:id="lbTooltipSenha" layoutX="286.0" layoutY="176.0" text="Senha muito curta" textFill="#ed7009" />
+            <Label fx:id="lbTooltipSenhaConfirmar" layoutX="286.0" layoutY="240.0" text="Senhas não combinam" textFill="#20d320" />
+            <Hyperlink fx:id="hlCancelarCriarConta" layoutX="75.0" layoutY="349.0" onAction="#gotoTelaDeLogin" text="Cancelar" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

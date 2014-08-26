@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="poupazudo.controller.CriarTipoDeContaController">
+   <children>
+      <Pane layoutX="245.0" layoutY="104.0" prefHeight="360.0" prefWidth="316.0">
+         <children>
+            <Label fx:id="lbSaldoInicial" layoutX="14.0" layoutY="27.0" prefHeight="17.0" prefWidth="120.0" text="Saldo inicial da conta" />
+            <TextField fx:id="tfSaldoInicial" alignment="CENTER_RIGHT" layoutX="14.0" layoutY="48.0" prefHeight="25.0" prefWidth="120.0" promptText="R$ 0.00" />
+            <TextField fx:id="tfTitulo" layoutX="14.0" layoutY="112.0" prefHeight="25.0" prefWidth="165.0" />
+            <Label fx:id="lbTitulo" layoutX="14.0" layoutY="91.0" text="Título" />
+            <CheckBox fx:id="rbIncluirNoSaldoGeral" layoutX="159.0" layoutY="47.0" mnemonicParsing="false" text="Incluir no " />
+            <ColorPicker fx:id="cpCorDeIdentificacao" layoutX="194.0" layoutY="111.0" prefHeight="25.0" prefWidth="104.0" />
+            <Hyperlink fx:id="hlSaldoGeral" layoutX="229.0" layoutY="44.0" onAction="#gotoPainelSaldoGeral" text="saldo geral" />
+            <Button fx:id="btnAdicionar" layoutX="216.0" layoutY="179.0" mnemonicParsing="false" onAction="#adicionarTipoDeConta" prefHeight="25.0" prefWidth="82.0" text="Adicionar" />
+            <Hyperlink fx:id="hlCancelar" layoutX="142.0" layoutY="180.0" onAction="#gotoPainelPrincipal" text="Cancelar" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
