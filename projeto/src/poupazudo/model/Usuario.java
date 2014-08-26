@@ -1,8 +1,12 @@
 package poupazudo.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import poupazudo.exceptions.EmailIncorretoException;
 import poupazudo.exceptions.NomeIncorretoException;
 import poupazudo.exceptions.SenhaInseguraException;
+import poupazudo.model.transacao.Transacao;
 import poupazudo.util.Email;
 
 /**
@@ -27,7 +31,13 @@ public class Usuario {
 	private String dicaDeSenha;
 
 	private boolean status;
-
+	
+	private List<Conta> contas;
+	
+	private List<Categoria> categorias;
+	
+	private List<Transacao> transacoes;
+	
 	/**
 	 * Inicializa um novo usuário
 	 * 
@@ -56,6 +66,14 @@ public class Usuario {
 		setEmail(email);
 		setSenha(senha);
 		setStatus(false);
+		
+		recuperarDadosDoUsuario();
+	}
+
+	private void recuperarDadosDoUsuario() {
+		contas = new ArrayList<Conta>();
+		categorias = new ArrayList<Categoria>();
+		transacoes = new ArrayList<Transacao>();
 	}
 
 	/**
@@ -89,6 +107,8 @@ public class Usuario {
 		setSenha(senha);
 		setDicaDeSenha(dica);
 		setStatus(false);
+		
+		recuperarDadosDoUsuario();
 	}
 
 	/**
@@ -213,6 +233,66 @@ public class Usuario {
 	 */
 	public void setDicaDeSenha(String dicaDeSenha) {
 		this.dicaDeSenha = dicaDeSenha;
+	}
+
+	public void adicionarConta(Conta conta) {
+		contas.add(conta);
+	}
+	
+	public boolean removerConta(Conta conta) {
+		for (Conta c : contas)
+			if (conta.equals(c))
+				return contas.remove(conta);
+		
+		return false;
+	}
+	
+	public List<Conta> getContas() {
+		return contas;
+	}
+
+	public void setContas(List<Conta> contas) {
+		this.contas = contas;
+	}
+
+	public void adicionarCategoria(Categoria categoria) {
+		categorias.add(categoria);
+	}
+	
+	public boolean removerCategoria(Categoria categoria) {
+		for (Categoria c : categorias)
+			if (categoria.equals(c))
+				return categorias.remove(c);
+		
+		return false;
+	}
+	
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+
+	public void adicionarTransacao(Transacao transacao) {
+		transacoes.add(transacao);
+	}
+	
+	public boolean removerTransacao(Transacao transacao) {
+		for (Transacao t : transacoes)
+			if (transacao.equals(t))
+				return transacoes.remove(t);
+		
+		return false;
+	}
+	
+	public List<Transacao> getTransacoes() {
+		return transacoes;
+	}
+
+	public void setTransacoes(List<Transacao> transacoes) {
+		this.transacoes = transacoes;
 	}
 
 	/**
