@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -11,17 +13,17 @@
 
 <Pane onMouseEntered="#carregarCampos" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poupazudo.controller.PainelPrincipalController">
    <children>
-      <ImageView fitHeight="53.0" fitWidth="54.0" layoutX="11.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="53.0" fitWidth="54.0" layoutX="11.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../res/pig.png" />
          </image>
       </ImageView>
-      <Label fx:id="lbNomeUsuario" layoutX="72.0" layoutY="14.0" text="Nome do Usuario">
+      <Label fx:id="lbNomeUsuario" layoutX="72.0" layoutY="9.0" text="Nome do Usuario">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lbEmailUsuario" layoutX="72.0" layoutY="31.0" text="email@gmail.com" textFill="#abaaaa">
+      <Label fx:id="lbEmailUsuario" layoutX="72.0" layoutY="26.0" text="email@gmail.com" textFill="#abaaaa">
          <font>
             <Font size="11.0" />
          </font>
@@ -36,6 +38,17 @@
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <Hyperlink fx:id="hlAdicionarConta" layoutX="4.0" layoutY="15.0" onAction="#gotoAdicionarConta" text="Adicionar Conta" />
+                              <TableView fx:id="tvListaContas" layoutX="6.0" layoutY="60.0" prefHeight="351.0" prefWidth="304.0">
+                                 <columns>
+                                    <TableColumn fx:id="tcNome" prefWidth="152.0" text="Conta" />
+                                    <TableColumn fx:id="tcSaldo" prefWidth="145.0" text="Saldo">
+                                       <columns>
+                                          <TableColumn fx:id="tcSaldoPrevisto" prefWidth="75.0" text="Previsto" />
+                                          <TableColumn fx:id="tcSaldoAtual" prefWidth="75.0" text="Atual" />
+                                       </columns>
+                                    </TableColumn>
+                                 </columns>
+                              </TableView>
                            </children>
                         </Pane>
                      </content>
@@ -87,6 +100,27 @@
             </TabPane>
          </children>
       </Pane>
-      <Hyperlink fx:id="hlSair" layoutX="68.0" layoutY="47.0" onAction="#gotoConfirmarSair" text="Encerrar sessão" />
+      <Hyperlink fx:id="hlSair" layoutX="68.0" layoutY="42.0" onAction="#gotoConfirmarSair" text="Sair" />
+      <Label layoutX="16.0" layoutY="386.0" text="Saldo Total">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="16.0" layoutY="405.0" text="R$">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbValorSaldo" layoutX="42.0" layoutY="390.0" prefHeight="70.0" prefWidth="168.0" text="0,00">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" fill="DODGERBLUE" height="53.0" layoutX="-14.0" layoutY="391.0" smooth="false" stroke="#1e90fff2" strokeType="INSIDE" width="20.0" />
+      <Label layoutX="16.0" layoutY="124.0" text="Atividades Recentes">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

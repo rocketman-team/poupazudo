@@ -1,13 +1,22 @@
 package poupazudo.controller;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 import poupazudo.enuns.TipoTela;
+import poupazudo.model.Conta;
+import poupazudo.model.Contas;
 
 public class PainelPrincipalController extends PoupazudoController implements
 		Initializable, TelasController {
@@ -21,6 +30,9 @@ public class PainelPrincipalController extends PoupazudoController implements
 	private Label lbEmailUsuario;
 
 	@FXML
+	private Label lbValorSaldo;
+	
+	@FXML
 	private Hyperlink hlAdicionarConta;
 
 	@FXML
@@ -28,10 +40,25 @@ public class PainelPrincipalController extends PoupazudoController implements
 
 	@FXML
 	private Hyperlink hlAdicionaReceita;
-
+	
 	@FXML
 	private Hyperlink hlSair;
-
+	
+	@FXML
+	private TableView<Conta> tvListaContas;
+	
+	@FXML
+	private TableColumn<String, Conta> tcNome;
+	
+	@FXML
+	private TableColumn<String, Conta> tcSaldo;
+	
+	@FXML
+	private TableColumn<String, Conta> tcSaldoPrevisto;
+	
+	@FXML
+	private TableColumn<String, Conta> tcSaldoAtual;
+	
 	@Override
 	public void setTela(Tela tela) {
 		controlador = tela;
@@ -39,18 +66,19 @@ public class PainelPrincipalController extends PoupazudoController implements
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		
 	}
 	
 	@FXML
 	protected void carregarCampos() {
 		lbNomeUsuario.setText(usuarioLocal.getNome());
 		lbEmailUsuario.setText(usuarioLocal.getEmail());
+
 	}
 	
 	@FXML
 	protected void gotoAdicionarConta() {
-		//controlador.setTela(TipoTela.TELA_CRIAR_TIPO_CONTA);
+		controlador.setTela(TipoTela.TELA_CRIAR_TIPO_CONTA);
 	}
 
 	@FXML
@@ -65,6 +93,8 @@ public class PainelPrincipalController extends PoupazudoController implements
 
 	@FXML
 	protected void gotoConfirmarSair() {
-		controlador.setTela(TipoTela.TELA_DE_LOGIN);
+		//controlador.setTela(TipoTela.TELA_DE_LOGIN);
+		Stage stage = (Stage) hlSair.getScene().getWindow();
+		stage.close();
 	}
 }
