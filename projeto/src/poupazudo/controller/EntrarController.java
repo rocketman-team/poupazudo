@@ -20,6 +20,7 @@ import poupazudo.exceptions.SenhaInseguraException;
 import poupazudo.exceptions.UsuarioInexistenteException;
 import poupazudo.model.Usuario;
 import poupazudo.util.Arquivo;
+import poupazudo.view.Poupazudo;
 
 public class EntrarController extends PoupazudoController implements
 		Initializable, TelasController {
@@ -58,11 +59,13 @@ public class EntrarController extends PoupazudoController implements
 	}
 
 	@FXML
-	protected void efetuarLogin(ActionEvent event) {
+	protected void efetuarLogin(ActionEvent event) throws IOException,
+			EmailIncorretoException, NomeIncorretoException,
+			SenhaInseguraException {
 
 		try {
+
 			logar(tfEmail.getText(), pfSenha.getText());
-			criarSessaoDeUsuario(poupazudo.pesquisar(tfEmail.getText()));
 			controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 		} catch (UsuarioInexistenteException e) {
 			// TODO mostrar usuario inexistente;
@@ -75,17 +78,7 @@ public class EntrarController extends PoupazudoController implements
 		tfEmail.clear();
 		pfSenha.clear();
 	}
-	
-	private void criarSessaoDeUsuario(Usuario usuario) {
-		try {
-			Arquivo.salvar(usuario);
-			super.usuarioLocal = Arquivo.getUsuarioTemp();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
+
 	@FXML
 	protected void criarConta(ActionEvent event) {
 		controlador.setTela(TipoTela.TELA_CRIAR_CONTA);

@@ -1,7 +1,6 @@
 package poupazudo.controller;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -16,10 +15,7 @@ import poupazudo.exceptions.EmailIncorretoException;
 import poupazudo.exceptions.NomeIncorretoException;
 import poupazudo.exceptions.SenhaInseguraException;
 import poupazudo.exceptions.UsuarioJaExisteException;
-import poupazudo.model.Categoria;
-import poupazudo.model.Conta;
 import poupazudo.model.Usuario;
-import poupazudo.model.transacao.Receita;
 
 public class CriarContaController extends PoupazudoController implements
 		Initializable, TelasController {
@@ -65,19 +61,15 @@ public class CriarContaController extends PoupazudoController implements
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 	}
-
+	
 	@FXML
 	protected void criarNovoUsuario() {
 
 		try {
-			Usuario a = new Usuario(tfNomeDeUsuario.getText(),
+			poupazudo.adicionar(new Usuario(tfNomeDeUsuario.getText(),
 					tfEmailDeUsuario.getText(), pfSenhaSeUsuario.getText(),
-					tfDicaDeSenhaDoUsuario.getText());
-			a.adicionarConta(new Conta("carteira", 70.0));
-			int[] d = {255, 255, 255};
-			a.adicionarCategoria(new Categoria("familia", d));
-			poupazudo.adicionar(a);
-
+					tfDicaDeSenhaDoUsuario.getText()));
+			
 			gotoTelaDeLogin();
 		} catch (UsuarioJaExisteException e) {
 			// TODO Mostrar que ja existe um usuario com esse nome

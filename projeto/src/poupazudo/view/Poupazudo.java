@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import poupazudo.controller.Tela;
 import poupazudo.enuns.TipoTela;
+import poupazudo.model.Usuario;
 
 public class Poupazudo extends Application {
 	

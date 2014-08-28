@@ -17,9 +17,9 @@ import poupazudo.util.Arquivo;
 public class GerenteDeUsuarios {
 
 	private List<Usuario> usuarios;
-
+	
 	/**
-	 * Inicializa a lista de usu�rios do controle financeiro
+	 * Inicializa a lista de usuarios do controle financeiro
 	 * 
 	 * @throws IOException
 	 */
@@ -31,12 +31,12 @@ public class GerenteDeUsuarios {
 	}
 
 	/**
-	 * Adicionar um novo usu�rio ao controle financeiro
+	 * Adicionar um novo usuario ao controle financeiro
 	 * 
 	 * @param usuario
-	 *            Usu�rio
+	 *            Usuario
 	 * @throws UsuarioJaExisteException
-	 *             Usu�rio j� existente
+	 *             Usuario ja existente
 	 */
 	public void adicionar(Usuario usuario) throws UsuarioJaExisteException {
 

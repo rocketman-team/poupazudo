@@ -1,6 +1,5 @@
 package poupazudo.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -9,8 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import poupazudo.enuns.TipoTela;
-import poupazudo.model.Usuario;
-import poupazudo.util.Arquivo;
 
 public class PainelPrincipalController extends PoupazudoController implements
 		Initializable, TelasController {
@@ -40,19 +37,20 @@ public class PainelPrincipalController extends PoupazudoController implements
 		controlador = tela;
 	}
 	
-	public PainelPrincipalController() {		
-		//lbNomeUsuario.setText(usuarioLocal.getNome());
-		//lbEmailUsuario.setText(usuarioLocal.getEmail());
-	}
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 	}
-		
+	
+	@FXML
+	protected void carregarCampos() {
+		lbNomeUsuario.setText(usuarioLocal.getNome());
+		lbEmailUsuario.setText(usuarioLocal.getEmail());
+	}
+	
 	@FXML
 	protected void gotoAdicionarConta() {
-		controlador.setTela(TipoTela.TELA_CRIAR_TIPO_CONTA);
+		//controlador.setTela(TipoTela.TELA_CRIAR_TIPO_CONTA);
 	}
 
 	@FXML
@@ -69,5 +67,4 @@ public class PainelPrincipalController extends PoupazudoController implements
 	protected void gotoConfirmarSair() {
 		controlador.setTela(TipoTela.TELA_DE_LOGIN);
 	}
-
 }
