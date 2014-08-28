@@ -7,10 +7,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import poupazudo.controller.Tela;
 import poupazudo.enuns.TipoTela;
-import poupazudo.model.Usuario;
 
 public class Poupazudo extends Application {
 	
+	
+	/**
+	 * comment
+	 */
 	private static final String FXML_PATH = "/poupazudo/view/";
 	private static String entrarFXML = FXML_PATH + "Entrar.fxml";
 	private static String criarContaFXML = FXML_PATH + "CriarContaDeUsuario.fxml";
