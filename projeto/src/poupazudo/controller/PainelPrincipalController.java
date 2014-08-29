@@ -11,9 +11,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import poupazudo.enuns.TipoTela;
@@ -45,6 +45,9 @@ public class PainelPrincipalController extends PoupazudoController implements
 	private Label lbValorSaldoPrevistoSelecionado;
 	
 	@FXML
+	private Label lbDespesaFiltroMes;
+	
+	@FXML
 	private Hyperlink hlAdicionarConta;
 
 	@FXML
@@ -63,7 +66,7 @@ public class PainelPrincipalController extends PoupazudoController implements
 	private TableView<Conta> tvListaContas;
 
 	@FXML
-	private TableColumn<Conta, String> tcContas;
+	private TableColumn<Conta, String> tcConta;
 
 	@FXML
 	private TableColumn<Conta, Double> tcSaldoPrevisto;
@@ -72,7 +75,7 @@ public class PainelPrincipalController extends PoupazudoController implements
 	private TableColumn<Conta, Double> tcSaldoAtual;
 
 	@FXML
-	private TextField teste;
+	private Slider slDespesaFiltroMes;
 
 	private ObservableList<Conta> listaContas = FXCollections.observableArrayList();
 
@@ -88,14 +91,37 @@ public class PainelPrincipalController extends PoupazudoController implements
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		tcContas.setCellValueFactory(new PropertyValueFactory<Conta, String>("nome"));
+		tcConta.setCellValueFactory(new PropertyValueFactory<Conta, String>("nome"));
 		tcSaldoPrevisto.setCellValueFactory(new PropertyValueFactory<Conta, Double>("saldoPrevisto"));
 		tcSaldoAtual.setCellValueFactory(new PropertyValueFactory<Conta, Double>("SaldoAtual"));
 
 		observarLinhasDaTabela();
+	
+		observarTrocaDeMeses();
 		
 	}
 
+	private void observarTrocaDeMeses() {
+		slDespesaFiltroMes.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov,
+                    Number old_val, Number new_val) {
+            	
+            		lbDespesaFiltroMes.setText(buscarMes(new_val.intValue()));
+                }
+            });
+	}
+
+	private String buscarMes(int id) {
+		String meses[] = {"JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"};
+		
+		for (int i=1; i<=12; i++) {
+			if (id == i)
+				return meses[i-1];
+		}
+
+		return null;
+	}
+	
 	private void observarLinhasDaTabela() {
 		tvListaContas.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 			public void changed(
@@ -128,6 +154,8 @@ public class PainelPrincipalController extends PoupazudoController implements
 		}
 	}
 
+
+	
 	private void clean() {
 		flag = true;
 		listaContas.clear();
