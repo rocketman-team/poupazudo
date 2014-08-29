@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import poupazudo.enuns.Recorrencia;
 import poupazudo.model.Categoria;
 import poupazudo.model.Conta;
 

@@ -1,4 +1,4 @@
-package poupazudo.model.transacao;
+package poupazudo.enuns;
 
 public enum Recorrencia {
 

@@ -2,6 +2,7 @@ package poupazudo.model.transacao;
 
 import java.text.SimpleDateFormat;
 
+import poupazudo.enuns.Recorrencia;
 import poupazudo.model.Categoria;
 import poupazudo.model.Conta;
 
