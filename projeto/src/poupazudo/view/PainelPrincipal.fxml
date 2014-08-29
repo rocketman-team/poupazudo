@@ -40,7 +40,7 @@
                               <Hyperlink fx:id="hlAdicionarConta" layoutX="4.0" layoutY="15.0" onAction="#gotoAdicionarConta" text="Adicionar Conta" />
                               <TableView fx:id="tvListaContas" layoutX="6.0" layoutY="60.0" prefHeight="351.0" prefWidth="348.0">
                                  <columns>
-                                    <TableColumn fx:id="tcContas" prefWidth="125.0" text="Contas" />
+                                    <TableColumn fx:id="tcConta" prefWidth="125.0" text="Conta" />
                                     <TableColumn fx:id="tcSaldoPrevisto" prefWidth="98.0" text="Saldo Previsto" />
                                     <TableColumn fx:id="tcSaldoAtual" editable="false" prefWidth="133.0" text="Saldo Atual" />
                                  </columns>
@@ -50,7 +50,8 @@
                               </TableView>
                               <Pane fx:id="paneDetalhesConta" layoutX="357.0" layoutY="60.0" prefHeight="351.0" prefWidth="216.0">
                                  <children>
-                                    <Label fx:id="lbNomeConta" layoutX="14.0" layoutY="7.0" text="Conta">
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="200.0" stroke="#ebe7e7" strokeType="INSIDE" width="200.0" />
+                                    <Label fx:id="lbNomeConta" layoutX="14.0" layoutY="7.0" maxWidth="350.0" prefHeight="35.0" prefWidth="161.0" text="Conta">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
@@ -101,6 +102,24 @@
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <Hyperlink fx:id="hlAdicionarDespesa" layoutX="4.0" layoutY="15.0" onAction="#gotoCriarDespesa" text="Adicionar Despesa" />
+                              <TableView fx:id="tvListaDespesas" layoutX="6.0" layoutY="60.0" prefHeight="351.0" prefWidth="400.0">
+                                 <columns>
+                                    <TableColumn fx:id="tcIDColor" maxWidth="50.0" prefWidth="30.0" resizable="false" text="ID" />
+                                    <TableColumn fx:id="tcDespesa" maxWidth="300.0" minWidth="81.0" prefWidth="84.0" text="Despesa" />
+                                    <TableColumn fx:id="tcDespesaCategoria" maxWidth="300.0" minWidth="70.0" prefWidth="93.0" text="Categoria" />
+                                    <TableColumn fx:id="tcDespesaSaldoPrevisto" maxWidth="140.0" minWidth="86.0" prefWidth="104.0" text="Previsto" />
+                                    <TableColumn fx:id="tcDespesaSaldoAtual" editable="false" maxWidth="100.0" minWidth="86.0" prefWidth="86.0" text="Atual" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                              <Slider fx:id="slDespesaFiltroMes" layoutX="415.0" layoutY="380.0" majorTickUnit="1.0" max="12.0" min="1.0" minorTickCount="1" prefHeight="37.0" prefWidth="132.0" snapToTicks="true" />
+                              <Label fx:id="lbDespesaFiltroMes" contentDisplay="RIGHT" layoutX="492.0" layoutY="359.0" opacity="0.72" text="AGO" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </Pane>
                      </content>
