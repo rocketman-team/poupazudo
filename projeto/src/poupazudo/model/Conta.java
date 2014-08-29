@@ -1,34 +1,50 @@
 package poupazudo.model;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Conta {
 
-	private String nome;
-	private double saldo;
+	private SimpleStringProperty nome;
+	
+	private SimpleDoubleProperty saldoPrevisto;
+	
+	private SimpleDoubleProperty saldoAtual;
 
 	public Conta(String nome, double saldo) {
-		this.nome = nome;
-		this.saldo = saldo;
+		this.nome = new SimpleStringProperty(nome);
+		this.saldoPrevisto = new SimpleDoubleProperty(saldo);
+		
+		this.saldoAtual = new SimpleDoubleProperty(saldo);
 	}
 
 	public String getNome() {
-		return nome;
+		return nome.get();
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome.set(nome);
 	}
 
-	public double getSaldo() {
-		return saldo;
+	public double getSaldoPrevisto() {
+		return saldoPrevisto.get();
 	}
 
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
+	public void setSaldoPrevisto(double saldo) {
+		this.saldoPrevisto.set(saldo);
 	}
 
+	public double getSaldoAtual() {
+		return saldoAtual.get();
+	}
+
+	public void setSaldoAtual(double saldo) {
+		this.saldoAtual.set(saldo);
+	}
+	
 	@Override
 	public String toString() {
-		return "Conta [nome=" + nome + ", saldo=" + saldo + "]";
+		return "Conta [nome=" + nome + ", saldo=" + saldoAtual.get() + "]";
 	}
 
 	@Override
@@ -45,8 +61,8 @@ public class Conta {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (Double.doubleToLongBits(saldo) != Double
-				.doubleToLongBits(other.saldo))
+		if (Double.doubleToLongBits(saldoAtual.get()) != Double
+				.doubleToLongBits(other.saldoAtual.get()))
 			return false;
 		return true;
 	}

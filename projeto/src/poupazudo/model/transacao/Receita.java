@@ -15,10 +15,9 @@ public class Receita extends Transacao {
 	@Override
 	public void alteraSaldo(double valor) {
 		if (valor >= 0){
-		double somaSaldo = super.getConta().getSaldo() + valor;
-		super.getConta().setSaldo(somaSaldo);
+		double somaSaldo = super.getConta().getSaldoAtual() + valor;
+		super.getConta().setSaldoAtual(somaSaldo);
 		}
-
 	}
 
 }

@@ -15,7 +15,9 @@ public class PoupazudoController {
 	protected static Usuario usuarioLocal;
 
 	public PoupazudoController() {
+		
 		poupazudo = new GerenteDeUsuarios();
+		
 	}
 
 	public boolean logar(String email, String senha)
@@ -38,6 +40,13 @@ public class PoupazudoController {
 		return true;
 	}
 
+	public void salvar() {
+		
+		if (poupazudo.atualizarDadosDoUsuario(usuarioLocal)) {
+			poupazudo.atualizar();
+		}
+	}
+	
 	public Usuario getUsuarioLocal() {
 		return usuarioLocal;
 	}

@@ -66,6 +66,7 @@ public class EntrarController extends PoupazudoController implements
 		try {
 
 			logar(tfEmail.getText(), pfSenha.getText());
+			//logar("jef@gmail.com", "12345678");
 			controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 		} catch (UsuarioInexistenteException e) {
 			// TODO mostrar usuario inexistente;

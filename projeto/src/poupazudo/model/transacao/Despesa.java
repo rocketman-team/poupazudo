@@ -16,7 +16,7 @@ public class Despesa extends Transacao {
 
 	@Override
 	public boolean setValor(double valor) {
-		if (valor <= super.getConta().getSaldo()) {
+		if (valor <= super.getConta().getSaldoAtual()) {
 			super.setValor(valor);
 			alteraSaldo(valor);
 			return true;
@@ -28,15 +28,15 @@ public class Despesa extends Transacao {
 	public boolean setRecorrencia(Recorrencia recorrencia) {
 		super.setRecorrencia(recorrencia);
 		if (super.getValor() * recorrencia.getValor() <= super.getConta()
-				.getSaldo())
+				.getSaldoAtual())
 			return true;
 		return false;
 	}
 
 	@Override
 	public void alteraSaldo(double valor) {
-		double subtraiSaldo = super.getConta().getSaldo() - valor;
-		super.getConta().setSaldo(subtraiSaldo);
+		double subtraiSaldo = super.getConta().getSaldoAtual() - valor;
+		super.getConta().setSaldoAtual(subtraiSaldo);
 	}
 
 }

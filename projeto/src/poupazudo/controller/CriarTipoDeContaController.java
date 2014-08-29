@@ -12,9 +12,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import poupazudo.enuns.TipoTela;
-import poupazudo.exceptions.EmailIncorretoException;
-import poupazudo.exceptions.NomeIncorretoException;
-import poupazudo.exceptions.SenhaInseguraException;
+import poupazudo.model.Conta;
 
 public class CriarTipoDeContaController extends PoupazudoController implements
 		Initializable, TelasController {
@@ -52,7 +50,11 @@ public class CriarTipoDeContaController extends PoupazudoController implements
 
 	@FXML
 	protected void adicionarTipoDeConta() {
-		// TODO
+		usuarioLocal.adicionarConta(new Conta(tfTitulo.getText(), Double
+				.parseDouble(tfSaldoInicial.getText())));
+		
+		salvar();
+		controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 	}
 
 	@FXML

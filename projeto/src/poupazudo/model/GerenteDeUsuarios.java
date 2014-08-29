@@ -8,8 +8,8 @@ import poupazudo.exceptions.UsuarioJaExisteException;
 import poupazudo.util.Arquivo;
 
 /**
- * Esta classe representa um Gerente de usu�rios no qual mant�m armazenado uma
- * lista de usu�rios
+ * Esta classe representa um Gerente de usu�rios no qual mant�m armazenado
+ * uma lista de usu�rios
  * 
  * @author Team
  * 
@@ -17,7 +17,7 @@ import poupazudo.util.Arquivo;
 public class GerenteDeUsuarios {
 
 	private List<Usuario> usuarios;
-	
+
 	/**
 	 * Inicializa a lista de usuarios do controle financeiro
 	 * 
@@ -45,8 +45,21 @@ public class GerenteDeUsuarios {
 				throw new UsuarioJaExisteException();
 
 		usuarios.add(usuario);
-		
+
 		atualizar();
+	}
+
+	/**
+	 * Remove um usuario da lista de usuarios
+	 * 
+	 * @param usuario
+	 *            {@link Usuario}
+	 */
+	public void remover(Usuario usuario) {
+		for (Usuario usr : usuarios) {
+			if (usr.equals(usuario))
+				usuarios.remove(usr);
+		}
 	}
 
 	/**
@@ -87,5 +100,16 @@ public class GerenteDeUsuarios {
 
 	public List<Usuario> getUsuarios() {
 		return usuarios;
+	}
+
+	public boolean atualizarDadosDoUsuario(Usuario usuarioLocal) {
+		
+		for (int usr = 0; usr < usuarios.size(); usr++) {
+			if (usuarios.get(usr).getEmail().equals(usuarioLocal.getEmail())) {
+				usuarios.remove(usr);
+			}
+		}	
+		
+		return usuarios.add(usuarioLocal);
 	}
 }
