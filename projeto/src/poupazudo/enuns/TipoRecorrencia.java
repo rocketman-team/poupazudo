@@ -1,12 +1,12 @@
 package poupazudo.enuns;
 
-public enum Recorrencia {
+public enum TipoRecorrencia {
 
 	NENHUMA(0), SEMANAL(4), MENSAL(1);
 
 	private int recorrencia;
 
-	private Recorrencia(int recorrencia) {
+	private TipoRecorrencia(int recorrencia) {
 		this.recorrencia = recorrencia;
 	}
 
