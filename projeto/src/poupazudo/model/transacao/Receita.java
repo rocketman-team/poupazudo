@@ -2,14 +2,14 @@ package poupazudo.model.transacao;
 
 import java.text.SimpleDateFormat;
 
-import poupazudo.enuns.Recorrencia;
+import poupazudo.enuns.TipoRecorrencia;
 import poupazudo.model.Categoria;
 import poupazudo.model.Conta;
 
 public class Receita extends Transacao {
 
 	public Receita(SimpleDateFormat data, double valor, Categoria categoria,
-			Recorrencia recorrencia, String descricao, Conta conta, int repeticao, boolean fixo) {
+			TipoRecorrencia recorrencia, String descricao, Conta conta, int repeticao, boolean fixo) {
 		super(data, valor, categoria, recorrencia, descricao, conta, repeticao, fixo);
 	}
 

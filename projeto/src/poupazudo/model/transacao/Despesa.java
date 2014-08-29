@@ -2,14 +2,14 @@ package poupazudo.model.transacao;
 
 import java.text.SimpleDateFormat;
 
-import poupazudo.enuns.Recorrencia;
+import poupazudo.enuns.TipoRecorrencia;
 import poupazudo.model.Categoria;
 import poupazudo.model.Conta;
 
 public class Despesa extends Transacao {
 
 	public Despesa(SimpleDateFormat data, double valor, Categoria categoria,
-			Recorrencia recorrencia, String descricao, Conta conta,
+			TipoRecorrencia recorrencia, String descricao, Conta conta,
 			int repeticao, boolean fixo) {
 		super(data, valor, categoria, recorrencia, descricao, conta, repeticao,
 				fixo);
@@ -26,7 +26,7 @@ public class Despesa extends Transacao {
 	}
 
 	@Override
-	public boolean setRecorrencia(Recorrencia recorrencia) {
+	public boolean setRecorrencia(TipoRecorrencia recorrencia) {
 		super.setRecorrencia(recorrencia);
 		if (super.getValor() * recorrencia.getValor() <= super.getConta()
 				.getSaldoAtual())

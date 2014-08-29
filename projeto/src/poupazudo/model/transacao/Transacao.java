@@ -4,7 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import poupazudo.enuns.Recorrencia;
+import poupazudo.enuns.TipoRecorrencia;
 import poupazudo.model.Categoria;
 import poupazudo.model.Conta;
 
@@ -18,7 +18,7 @@ public abstract class Transacao {
 
 	private Categoria categoria;
 
-	private Recorrencia recorrencia;
+	private TipoRecorrencia recorrencia;
 
 	private String descricao;
 
@@ -35,7 +35,7 @@ public abstract class Transacao {
 	private boolean fixo;
 
 	public Transacao(SimpleDateFormat data, double valor, Categoria categoria,
-			Recorrencia recorrencia, String descricao, Conta conta,
+			TipoRecorrencia recorrencia, String descricao, Conta conta,
 			int repeticao, boolean fixo) {
 		this.data = data;
 		this.valor = valor;
@@ -85,11 +85,11 @@ public abstract class Transacao {
 		this.categoria = categoria;
 	}
 
-	public Recorrencia getRecorrencia() {
+	public TipoRecorrencia getRecorrencia() {
 		return recorrencia;
 	}
 
-	public boolean setRecorrencia(Recorrencia recorrencia) {
+	public boolean setRecorrencia(TipoRecorrencia recorrencia) {
 		this.recorrencia = recorrencia;
 		return true;
 	}
