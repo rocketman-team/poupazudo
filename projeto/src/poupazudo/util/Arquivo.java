@@ -40,15 +40,15 @@ public class Arquivo {
 	private static BufferedReader reader;
 
 	/**
-	 * Biblioteca que permite converter Objectos Java em uma representa��o JSON
+	 * Biblioteca que permite converter Objectos Java em uma representacao JSON
 	 */
 	private static Gson gson = new Gson();
 
 	/**
-	 * Salva a lista de usu�rios do sistema
+	 * Salva a lista de usuarios do sistema
 	 * 
 	 * @param lista
-	 *            lista de usu�rios do sistema
+	 *            lista de usuarios do sistema
 	 * @throws IOException
 	 *             Erro ao manipular um arquivo
 	 */
@@ -80,9 +80,9 @@ public class Arquivo {
 
 
 	/**
-	 * Retorna a lista de usu�rios do sistema
+	 * Retorna a lista de usuarios do sistema
 	 * 
-	 * @return Lista e usu�rios do sistema
+	 * @return Lista e usuarios do sistema
 	 * @throws IOException
 	 *             Erro ao manipular um arquivo
 	 */
