@@ -1,4 +1,4 @@
-package poupazudo.model.transacao;
+package poupazudo.transacao.model;
 
 import java.text.SimpleDateFormat;
 
