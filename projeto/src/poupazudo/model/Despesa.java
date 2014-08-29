@@ -1,10 +1,8 @@
-package poupazudo.transacao.model;
+package poupazudo.model;
 
 import java.text.SimpleDateFormat;
 
 import poupazudo.enuns.TipoRecorrencia;
-import poupazudo.model.Categoria;
-import poupazudo.model.Conta;
 
 public class Despesa extends Transacao {
 

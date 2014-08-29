@@ -1,4 +1,4 @@
-package poupazudo.transacao.model;
+package poupazudo.model;
 
 import java.util.ArrayList;
 import java.util.List;

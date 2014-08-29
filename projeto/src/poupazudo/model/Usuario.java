@@ -6,7 +6,6 @@ import java.util.List;
 import poupazudo.exceptions.EmailIncorretoException;
 import poupazudo.exceptions.NomeIncorretoException;
 import poupazudo.exceptions.SenhaInseguraException;
-import poupazudo.transacao.model.Transacao;
 import poupazudo.util.Email;
 
 /**

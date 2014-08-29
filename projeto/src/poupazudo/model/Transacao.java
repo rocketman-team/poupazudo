@@ -1,12 +1,10 @@
-package poupazudo.transacao.model;
+package poupazudo.model;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import poupazudo.enuns.TipoRecorrencia;
-import poupazudo.model.Categoria;
-import poupazudo.model.Conta;
 
 public abstract class Transacao {
 
