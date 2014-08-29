@@ -10,16 +10,12 @@ import poupazudo.enuns.TipoTela;
 
 public class Poupazudo extends Application {
 	
-	
-	/**
-	 * comment
-	 */
-	private static final String FXML_PATH = "/poupazudo/view/";
-	private static String entrarFXML = FXML_PATH + "Entrar.fxml";
-	private static String criarContaFXML = FXML_PATH + "CriarContaDeUsuario.fxml";
-	private static String painelPrincipalFXML = FXML_PATH + "PainelPrincipal.fxml";
-	private static String criarDespesaFXML = FXML_PATH + "CriarDespesa.fxml";
-	private static String criarReceitaFXML = FXML_PATH + "CriarReceita.fxml";
+	private static final String FXML_PATH      = "/poupazudo/view/";
+	private static String entrarFXML           = FXML_PATH + "Entrar.fxml";
+	private static String criarContaFXML       = FXML_PATH + "CriarContaDeUsuario.fxml";
+	private static String painelPrincipalFXML  = FXML_PATH + "PainelPrincipal.fxml";
+	private static String criarDespesaFXML     = FXML_PATH + "CriarDespesa.fxml";
+	private static String criarReceitaFXML     = FXML_PATH + "CriarReceita.fxml";
 	private static String criarTipoDeContaFXML = FXML_PATH + "CriarTipoDeConta.fxml";
 
 	@Override
@@ -36,6 +32,7 @@ public class Poupazudo extends Application {
 		painel.setTela(TipoTela.TELA_DE_LOGIN);
 
 		Scene scene = new Scene(painel);
+		scene.getStylesheets().add(FXML_PATH + "application.css");
 		stage.setTitle("Poupazudo");
 		stage.setMaxHeight(500);
 		stage.setMinHeight(500);
