@@ -1,0 +1,8 @@
+
+.table-row-cell:selected {
+     -fx-background-color: #398ADB ;
+}
+
+.table-row-cell {
+	-fx-font-size: 14px;
+}
