@@ -16,10 +16,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
+import poupazudo.enuns.TipoRecorrencia;
 import poupazudo.enuns.TipoTela;
-import poupazudo.exceptions.EmailIncorretoException;
-import poupazudo.exceptions.NomeIncorretoException;
-import poupazudo.exceptions.SenhaInseguraException;
+import poupazudo.model.Despesa;
+import poupazudo.util.Filtro;
 
 public class CriarDespesaController extends PoupazudoController implements
 		Initializable, TelasController {
@@ -104,14 +104,24 @@ public class CriarDespesaController extends PoupazudoController implements
 	@FXML
 	private Pane formNovaCategoria;
 
+	private boolean flag = true;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		habilitarFormDespesa();
+	}
 
-		cbCategoria.getItems().addAll("categoria A", "categoria B",
-				"categoria C");
-
+	@FXML
+	protected void carregarDados() {
+		if (flag) {
+			cbConta.getItems().addAll(Filtro.filtroConta(usuarioLocal.getContas()));
+			flag = false;
+		}
+	}
+	
+	private void clean() {
+		flag = true;
 	}
 
 	@Override
@@ -121,6 +131,7 @@ public class CriarDespesaController extends PoupazudoController implements
 
 	@FXML
 	protected void gotoPainelPrincipal() {
+		clean();
 		controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 	}
 
@@ -145,18 +156,24 @@ public class CriarDespesaController extends PoupazudoController implements
 	@FXML
 	protected void gotoConfirmarCriarDespesa() {
 
-		// Criar despesa
+		Despesa despesa = new Despesa(tfNomeDespesa.getText(),
+				Double.parseDouble(tfValorDespesa.getText()),
+				cbCategoria.getValue());
+		
+		despesa.setConta(cbConta.getValue());
+		despesa.setDescricao(taDescricao.getText());
 
-		if (slRecorrenciaDespesa.getValue() >= 0
-				&& slRecorrenciaDespesa.getValue() < 0.5) {
-			// nenuma
-		} else if (slRecorrenciaDespesa.getValue() > 1.0
-				&& slRecorrenciaDespesa.getValue() <= 2.0) {
-			// mensal
+		if (slRecorrenciaDespesa.getValue() >= 0 && slRecorrenciaDespesa.getValue() < 0.5) {
+			despesa.setRecorrencia(TipoRecorrencia.NENHUMA);
+		} else if (slRecorrenciaDespesa.getValue() > 1.0 && slRecorrenciaDespesa.getValue() <= 2.0) {
+			despesa.setRecorrencia(TipoRecorrencia.MENSAL);
 		} else {
-			// semanal
+			despesa.setRecorrencia(TipoRecorrencia.SEMANAL);
 		}
 
+		usuarioLocal.adicionarTransacao(despesa);
+
+		salvar();
 		controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 	}
 

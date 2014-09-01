@@ -4,6 +4,8 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Conta {
+	
+	private SimpleStringProperty cor;
 
 	private SimpleStringProperty nome;
 	
@@ -11,11 +13,20 @@ public class Conta {
 	
 	private SimpleDoubleProperty saldoAtual;
 
-	public Conta(String nome, double saldo) {
+	public Conta(String nome, double saldo, String cor) {
+		this.cor = new SimpleStringProperty(cor);
 		this.nome = new SimpleStringProperty(nome);
 		this.saldoPrevisto = new SimpleDoubleProperty(saldo);
 		
 		this.saldoAtual = new SimpleDoubleProperty(saldo);
+	}
+	
+	public String getCor() {
+		return cor.get();
+	}
+
+	public void setCor(String cor) {
+		this.cor.set(cor);
 	}
 
 	public String getNome() {

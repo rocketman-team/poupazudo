@@ -3,9 +3,16 @@ package poupazudo.model;
 import java.util.Arrays;
 
 public class Categoria {
+	
 	private String nome;
+	
 	private int[] cor;
 
+	public Categoria(String nome, String cor) {
+		this.nome = nome;
+		//this.cor = cor;
+	}
+	
 	public Categoria(String nome, int[] cor) {
 		this.nome = nome;
 		this.cor = cor;

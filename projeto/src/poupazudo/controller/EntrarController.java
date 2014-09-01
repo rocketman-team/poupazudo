@@ -18,9 +18,6 @@ import poupazudo.exceptions.NomeIncorretoException;
 import poupazudo.exceptions.SenhaIncorrentaException;
 import poupazudo.exceptions.SenhaInseguraException;
 import poupazudo.exceptions.UsuarioInexistenteException;
-import poupazudo.model.Usuario;
-import poupazudo.util.Arquivo;
-import poupazudo.view.Poupazudo;
 
 public class EntrarController extends PoupazudoController implements
 		Initializable, TelasController {
@@ -65,8 +62,8 @@ public class EntrarController extends PoupazudoController implements
 
 		try {
 
-			logar(tfEmail.getText(), pfSenha.getText());
-			//logar("jef@gmail.com", "12345678");
+			//logar(tfEmail.getText(), pfSenha.getText());
+			logar("jef@gmail.com", "12345678");
 			controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 		} catch (UsuarioInexistenteException e) {
 			// TODO mostrar usuario inexistente;

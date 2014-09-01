@@ -4,23 +4,26 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
 import poupazudo.enuns.TipoRecorrencia;
+import poupazudo.enuns.TipoTransacao;
 
-public abstract class Transacao {
+public class Transacao {
 
+	private TipoTransacao tipoTransacao;
+	
 	private Calendar calendario;
 
 	private DateFormat data;
 
-	private double valor;
-
-	private Categoria categoria;
+	private String categoria;
 
 	private TipoRecorrencia recorrencia;
 
 	private String descricao;
 
-	private Conta conta;
+	private String conta;
 
 	private int repeticao;
 
@@ -32,11 +35,28 @@ public abstract class Transacao {
 
 	private boolean fixo;
 
-	public Transacao(SimpleDateFormat data, double valor, Categoria categoria,
-			TipoRecorrencia recorrencia, String descricao, Conta conta,
+	private SimpleStringProperty corTransacao;
+	
+	private SimpleStringProperty nomeTransacao;
+	
+	private SimpleStringProperty categoriaTransacao;
+	
+	private SimpleDoubleProperty saldoAtualTransacao;
+	
+	private SimpleDoubleProperty saldoPrevistoTransacao;
+
+	public Transacao(String nome, Double valor, String categoria) {
+		this.corTransacao = new SimpleStringProperty("");
+		this.nomeTransacao = new SimpleStringProperty(nome);
+		this.categoriaTransacao = new SimpleStringProperty(categoria);
+		this.saldoAtualTransacao = new SimpleDoubleProperty(valor);
+		this.saldoPrevistoTransacao = new SimpleDoubleProperty(valor);
+	}
+	
+	public Transacao(SimpleDateFormat data, String categoria,
+			TipoRecorrencia recorrencia, String descricao, String conta,
 			int repeticao, boolean fixo) {
 		this.data = data;
-		this.valor = valor;
 		this.categoria = categoria;
 		this.recorrencia = recorrencia;
 		this.descricao = descricao;
@@ -66,20 +86,11 @@ public abstract class Transacao {
 		this.data = data;
 	}
 
-	public double getValor() {
-		return valor;
-	}
-
-	public boolean setValor(double valor) {
-		this.valor = valor;
-		return true;
-	}
-
-	public Categoria getCategoria() {
+	public String getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(Categoria categoria) {
+	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
 
@@ -100,57 +111,27 @@ public abstract class Transacao {
 		return descricao;
 	}
 
-	public Conta getConta() {
+	public String getConta() {
 		return conta;
 	}
 
-	public void setConta(Conta conta) {
+	public void setConta(String conta) {
 		this.conta = conta;
 	}
 
-	public abstract void alteraSaldo(double valor);
-
-	public void atualizaTransacao() {
-		Calendar calendarioAtual = Calendar.getInstance();
-		if (getRecorrencia().getValor() == 0)
-			alteraSaldo(valor);
-
-		else {
-			if (fixo) {
-				switch (getRecorrencia().getValor()) {
-				case 4:
-					if (calendarioAtual.get(Calendar.DAY_OF_WEEK) == dia_semana)
-						alteraSaldo(valor);
-
-				case 1:
-					if (calendarioAtual.get(Calendar.DAY_OF_MONTH) == dia_mes)
-						alteraSaldo(valor);
-				}
-			}
-
-			else {
-				switch (getRecorrencia().getValor()) {
-				case 4:
-					if (calendarioAtual.get(Calendar.DAY_OF_WEEK) == dia_semana)
-						if (ocorrencias > 0) {
-							alteraSaldo(valor);
-							ocorrencias--;
-						}
-
-				case 1:
-					if (calendarioAtual.get(Calendar.DAY_OF_MONTH) == dia_mes)
-						if (ocorrencias > 0) {
-							alteraSaldo(valor);
-							ocorrencias--;
-						}
-				}
-			}
-		}
+	public TipoTransacao getTipo() {
+		return this.tipoTransacao;
 	}
+
+	public void setTipo(TipoTransacao tipo) {
+		this.tipoTransacao =  tipo;
+	}
+	
+	//public abstract void alteraSaldo(double valor);
 
 	@Override
 	public String toString() {
-		return "Transacao [data=" + data + ", valor=" + valor + ", categoria="
+		return "Transacao [data=" + data + ", categoria="
 				+ categoria + ", recorrencia=" + recorrencia + ", descricao="
 				+ descricao + ", conta=" + conta + ", repeticao=" + repeticao
 				+ "]";
@@ -175,10 +156,47 @@ public abstract class Transacao {
 				return false;
 		} else if (!data.equals(other.data))
 			return false;
-		if (Double.doubleToLongBits(valor) != Double
-				.doubleToLongBits(other.valor))
-			return false;
 		return true;
+	}
+
+	public String getCorTransacao() {
+		return corTransacao.get();
+	}
+
+	public void setCorTransacao(String corTransacao) {
+		this.corTransacao.set(corTransacao);
+	}
+
+	public String getNomeTransacao() {
+		return nomeTransacao.get();
+	}
+
+	public void setNomeTransacao(String nomeTransacao) {
+		this.nomeTransacao.set(nomeTransacao);;
+	}
+
+	public String getCategoriaTransacao() {
+		return categoriaTransacao.get();
+	}
+
+	public void setCategoriaTransacao(String categoriaTransacao) {
+		this.categoriaTransacao.set(categoriaTransacao);;
+	}
+
+	public Double getSaldoAtualTransacao() {
+		return saldoAtualTransacao.get();
+	}
+
+	public void setSaldoAtualTransacao(Double saldoAtualTransacao) {
+		this.saldoAtualTransacao.set(saldoAtualTransacao);
+	}
+
+	public Double getSaldoPrevistoTransacao() {
+		return saldoPrevistoTransacao.get();
+	}
+
+	public void setSaldoPrevistoTransacao(Double saldoPrevistoTransacao) {
+		this.saldoPrevistoTransacao.set(saldoPrevistoTransacao);
 	}
 
 }

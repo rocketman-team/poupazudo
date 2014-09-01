@@ -39,8 +39,7 @@ public class Poupazudo extends Application {
 		stage.setMaxWidth(800);
 		stage.setMinWidth(800);
 		stage.setScene(scene);
-		stage.show();
-		
+		stage.show();	
 	}
 
 	public static void main(String[] args) {

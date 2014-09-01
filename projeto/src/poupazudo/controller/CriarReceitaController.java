@@ -16,10 +16,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
+import poupazudo.enuns.TipoRecorrencia;
 import poupazudo.enuns.TipoTela;
-import poupazudo.exceptions.EmailIncorretoException;
-import poupazudo.exceptions.NomeIncorretoException;
-import poupazudo.exceptions.SenhaInseguraException;
+import poupazudo.model.Receita;
+import poupazudo.util.Filtro;
 
 public class CriarReceitaController extends PoupazudoController implements
 		Initializable, TelasController {
@@ -104,13 +104,13 @@ public class CriarReceitaController extends PoupazudoController implements
 	@FXML
 	private Pane formNovaCategoria;
 
+	private boolean flag = true;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		habilitarFormReceita();
-
-		cbCategoria.getItems().addAll("categoria A", "categoria B",
-				"categoria C");
+		
 	}
 
 	@Override
@@ -120,6 +120,7 @@ public class CriarReceitaController extends PoupazudoController implements
 
 	@FXML
 	protected void gotoPainelPrincipal() {
+		clean();
 		controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 	}
 
@@ -143,20 +144,40 @@ public class CriarReceitaController extends PoupazudoController implements
 
 	@FXML
 	protected void gotoConfirmarCriarReceita() {
-		// Criar despesa
-		if (slRecorrenciaReceita.getValue() >= 0
-				&& slRecorrenciaReceita.getValue() < 0.5) {
-			// nenuma
-		} else if (slRecorrenciaReceita.getValue() > 1.0
-				&& slRecorrenciaReceita.getValue() <= 2.0) {
-			// mensal;
-		} else {
-			// semanal
-		}
 
+		Receita receita = new Receita(tfNomeReceita.getText(),
+				Double.parseDouble(tfValorReceita.getText()),
+				cbCategoria.getValue());
+		
+		receita.setConta(cbConta.getValue());
+		receita.setDescricao(taDescricao.getText());
+
+		if (slRecorrenciaReceita.getValue() >= 0 && slRecorrenciaReceita.getValue() < 0.5) {
+			receita.setRecorrencia(TipoRecorrencia.NENHUMA);
+		} else if (slRecorrenciaReceita.getValue() > 1.0 && slRecorrenciaReceita.getValue() <= 2.0) {
+			receita.setRecorrencia(TipoRecorrencia.MENSAL);
+		} else {
+			receita.setRecorrencia(TipoRecorrencia.SEMANAL);
+		}
+		
+		usuarioLocal.adicionarTransacao(receita);
+
+		salvar();
 		controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 	}
 
+	@FXML
+	protected void carregarDados() {
+		if (flag) {
+			cbConta.getItems().addAll(Filtro.filtroConta(usuarioLocal.getContas()));
+			flag = false;
+		}
+	}
+	
+	private void clean() {
+		flag = true;
+	}
+	
 	@FXML
 	protected void habilitarFormReceita() {
 		formNovaCategoria.setDisable(true);

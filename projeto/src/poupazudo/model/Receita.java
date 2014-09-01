@@ -1,22 +1,20 @@
 package poupazudo.model;
 
-import java.text.SimpleDateFormat;
-
 import poupazudo.enuns.TipoRecorrencia;
+import poupazudo.enuns.TipoTransacao;
 
 public class Receita extends Transacao {
 
-	public Receita(SimpleDateFormat data, double valor, Categoria categoria,
-			TipoRecorrencia recorrencia, String descricao, Conta conta, int repeticao, boolean fixo) {
-		super(data, valor, categoria, recorrencia, descricao, conta, repeticao, fixo);
+	public Receita(String nome, Double valor, String categoria) {
+		super(nome, valor, categoria);
+		setTipo(TipoTransacao.RECEITA);
 	}
 
 	@Override
-	public void alteraSaldo(double valor) {
-		if (valor >= 0){
-		double somaSaldo = super.getConta().getSaldoAtual() + valor;
-		super.getConta().setSaldoAtual(somaSaldo);
-		}
+	public boolean setRecorrencia(TipoRecorrencia recorrencia) {
+		super.setRecorrencia(recorrencia);
+		if (getSaldoAtualTransacao() * recorrencia.getValor() <= getSaldoAtualTransacao())
+			return true;
+		return false;
 	}
-
 }
