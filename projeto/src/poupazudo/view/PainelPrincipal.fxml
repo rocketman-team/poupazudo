@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.paint.*?>
@@ -11,34 +12,34 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane onMouseEntered="#carregarCampos" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poupazudo.controller.PainelPrincipalController">
+<Pane onMouseEntered="#carregarCampos" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poupazudo.controller.PainelPrincipalController">
    <children>
       <ImageView fitHeight="53.0" fitWidth="54.0" layoutX="157.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../../res/pig.png" />
          </image>
       </ImageView>
-      <Label fx:id="lbNomeUsuario" layoutX="13.0" layoutY="10.0" text="Nome do Usuario">
+      <Label fx:id="lbNomeUsuario" layoutX="18.0" layoutY="77.0" text="Nome do Usuario">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lbEmailUsuario" layoutX="13.0" layoutY="27.0" text="email@gmail.com" textFill="#abaaaa">
+      <Label fx:id="lbEmailUsuario" layoutX="18.0" layoutY="94.0" text="email@gmail.com" textFill="#abaaaa">
          <font>
             <Font size="11.0" />
          </font>
       </Label>
-      <Separator layoutX="171.0" orientation="VERTICAL" prefHeight="500.0" />
-      <Pane layoutX="172.0" prefHeight="500.0" prefWidth="632.0">
+      <Separator layoutX="165.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="20.0" />
+      <Pane layoutX="172.0" prefHeight="600.0" prefWidth="632.0">
          <children>
-            <TabPane layoutX="5.0" prefHeight="500.0" prefWidth="623.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutX="5.0" prefHeight="600.0" prefWidth="723.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Contas">
                      <content>
                         <Pane prefHeight="471.0" prefWidth="644.0" visible="false">
                            <children>
                               <Hyperlink fx:id="hlAdicionarConta" layoutX="4.0" layoutY="15.0" onAction="#gotoAdicionarConta" text="Adicionar Conta" />
-                              <TableView fx:id="tvListaContas" layoutX="6.0" layoutY="60.0" prefHeight="351.0" prefWidth="348.0">
+                              <TableView fx:id="tvListaContas" layoutX="6.0" layoutY="60.0" prefHeight="394.0" prefWidth="348.0">
                                  <columns>
                                     <TableColumn fx:id="tcCorConta" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" text="ID" />
                                     <TableColumn fx:id="tcConta" prefWidth="125.0" text="Conta" />
@@ -49,9 +50,9 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <Pane fx:id="paneDetalhesConta" layoutX="357.0" layoutY="60.0" prefHeight="351.0" prefWidth="216.0">
+                              <Pane fx:id="paneDetalhesConta" layoutX="357.0" layoutY="60.0" prefHeight="351.0" prefWidth="264.0">
                                  <children>
-                                    <Label fx:id="lbNomeConta" layoutX="14.0" layoutY="7.0" maxWidth="350.0" prefHeight="35.0" prefWidth="161.0" text="Conta">
+                                    <Label fx:id="lbNomeConta" layoutX="14.0" layoutY="7.0" maxWidth="350.0" prefHeight="35.0" prefWidth="198.0" text="Conta">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
@@ -104,12 +105,12 @@
                         </Pane>
                      </content>
                   </Tab>
-                <Tab text="Despesa">
+                <Tab text="Despesas">
                      <content>
-                        <Pane prefHeight="471.0" prefWidth="647.0">
+                        <Pane prefHeight="459.0" prefWidth="723.0">
                            <children>
                               <Hyperlink fx:id="hlAdicionarDespesa" layoutX="4.0" layoutY="15.0" onAction="#gotoCriarDespesa" text="Adicionar Despesa" />
-                              <TableView fx:id="tvListaDespesas" layoutX="6.0" layoutY="60.0" prefHeight="351.0" prefWidth="400.0">
+                              <TableView fx:id="tvListaDespesas" layoutX="6.0" layoutY="60.0" prefHeight="394.0" prefWidth="400.0">
                                  <columns>
                                     <TableColumn fx:id="tcCorDespesa" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" resizable="false" text="ID" />
                                     <TableColumn fx:id="tcDespesa" maxWidth="300.0" minWidth="81.0" prefWidth="84.0" text="Despesa" />
@@ -121,9 +122,9 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <Pane fx:id="paneDetalhesDespesa" layoutX="406.0" layoutY="4.0" prefHeight="467.0" prefWidth="204.0">
+                              <Pane fx:id="paneDetalhesDespesa" layoutX="406.0" layoutY="4.0" prefHeight="467.0" prefWidth="264.0">
                                  <children>
-                                    <Label fx:id="lbNomeDespesa" layoutX="14.0" layoutY="49.0" maxWidth="350.0" prefHeight="35.0" prefWidth="161.0" text="Despesa">
+                                    <Label fx:id="lbNomeDespesa" layoutX="14.0" layoutY="49.0" maxWidth="350.0" prefHeight="35.0" prefWidth="189.0" text="Despesa">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
@@ -193,19 +194,19 @@
                                           <Font size="10.0" />
                                        </font>
                                     </Label>
-                                    <TextArea fx:id="taDespesaDescricaoSelecionado" editable="false" layoutX="16.0" layoutY="321.0" prefHeight="86.0" prefWidth="176.0" wrapText="true" />
+                                    <TextArea fx:id="taDespesaDescricaoSelecionado" editable="false" layoutX="16.0" layoutY="321.0" prefHeight="127.0" prefWidth="200.0" wrapText="true" />
                                  </children>
                               </Pane>
                            </children>
                         </Pane>
                      </content>
                   </Tab>
-                <Tab text="Receita">
+                <Tab text="Receitas">
                      <content>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <Hyperlink fx:id="hlAdicionarReceita" layoutX="4.0" layoutY="15.0" onAction="#gotoCriarReceita" text="Adicionar Receita" />
-                              <TableView fx:id="tvListaReceitas" layoutX="6.0" layoutY="60.0" prefHeight="351.0" prefWidth="400.0">
+                              <TableView fx:id="tvListaReceitas" layoutX="6.0" layoutY="60.0" prefHeight="394.0" prefWidth="400.0">
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
@@ -217,9 +218,9 @@
                                     <TableColumn fx:id="tcReceitaSaldoAtual" editable="false" maxWidth="100.0" minWidth="86.0" prefWidth="86.0" text="Atual" />
                                  </columns>
                               </TableView>
-                              <Pane fx:id="paneDetalhesReceita" layoutX="406.0" layoutY="4.0" prefHeight="467.0" prefWidth="204.0">
+                              <Pane fx:id="paneDetalhesReceita" layoutX="406.0" layoutY="4.0" prefHeight="467.0" prefWidth="264.0">
                                  <children>
-                                    <Label fx:id="lbNomeReceita" layoutX="14.0" layoutY="49.0" maxWidth="350.0" prefHeight="35.0" prefWidth="161.0" text="Receita">
+                                    <Label fx:id="lbNomeReceita" layoutX="14.0" layoutY="49.0" maxWidth="350.0" prefHeight="35.0" prefWidth="190.0" text="Receita">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
@@ -289,24 +290,47 @@
                                           <Font size="10.0" />
                                        </font>
                                     </Label>
-                                    <TextArea fx:id="taReceitaDescricaoSelecionado" editable="false" layoutX="16.0" layoutY="321.0" prefHeight="86.0" prefWidth="176.0" wrapText="true" />
+                                    <TextArea fx:id="taReceitaDescricaoSelecionado" editable="false" layoutX="16.0" layoutY="321.0" prefHeight="127.0" prefWidth="200.0" wrapText="true" />
                                  </children>
                               </Pane>
                            </children>
                         </Pane>
                      </content>
                   </Tab>
-                  <Tab text="Metas e Orçamentos">
+                  <Tab text="Relatório">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="349.0" prefWidth="377.0">
                            <children>
-                              <Slider fx:id="slDespesaFiltroMes" layoutX="42.0" layoutY="89.0" majorTickUnit="1.0" max="12.0" min="1.0" minorTickCount="1" prefHeight="37.0" prefWidth="132.0" snapToTicks="true" />
-                              <Label fx:id="lbDespesaFiltroMes" contentDisplay="RIGHT" layoutX="119.0" layoutY="68.0" opacity="0.72" text="AGO" textAlignment="RIGHT">
+                              <Pane layoutY="64.0" prefHeight="487.0" prefWidth="623.0">
+                                 <children>
+                                    <LineChart fx:id="lcRelatorio" layoutX="14.0" layoutY="79.0" prefHeight="318.0" prefWidth="583.0" title="Transações Realizadas">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </Pane>
+                              <Label layoutX="14.0" layoutY="14.0" text="Filtrar por categoria">
                                  <font>
-                                    <Font size="24.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="195.0" layoutY="177.0" text="Atividades Recentes">
+                              <ComboBox layoutX="13.0" layoutY="38.0" prefHeight="27.0" prefWidth="150.0" promptText="Categoria" />
+                              <Label layoutX="190.0" layoutY="14.0" text="Filtrar por data">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox layoutX="190.0" layoutY="38.0" prefHeight="25.0" prefWidth="42.0" promptText="Dia" />
+                              <ComboBox layoutX="241.0" layoutY="38.0" prefHeight="25.0" prefWidth="50.0" promptText="Mes" />
+                              <ComboBox layoutX="292.0" layoutY="38.0" prefHeight="25.0" prefWidth="50.0" promptText="Ano" />
+                              <ComboBox layoutX="478.0" layoutY="38.0" prefHeight="25.0" prefWidth="50.0" promptText="Ano" />
+                              <ComboBox layoutX="427.0" layoutY="38.0" prefHeight="25.0" prefWidth="50.0" promptText="Mes" />
+                              <ComboBox layoutX="376.0" layoutY="38.0" prefHeight="25.0" prefWidth="42.0" promptText="Dia" />
+                              <Label layoutX="350.0" layoutY="40.0" text="ate">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -316,44 +340,43 @@
                   </Tab>
                   <Tab text="Extrato">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                  </Tab>
-                  <Tab text="Calendário">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                  </Tab>
-                  <Tab text="Estatísticas">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                  </Tab>
-                  <Tab text="Relatórios">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="142.0" layoutY="56.0" text="Atividades Recentes">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Slider fx:id="slDespesaFiltroMes" layoutX="132.0" layoutY="115.0" majorTickUnit="1.0" max="12.0" min="1.0" minorTickCount="1" prefHeight="37.0" prefWidth="132.0" snapToTicks="true" />
+                              <Label fx:id="lbDespesaFiltroMes" contentDisplay="RIGHT" layoutX="209.0" layoutY="94.0" opacity="0.72" text="AGO" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children></AnchorPane>
                     </content>
                   </Tab>
               </tabs>
             </TabPane>
          </children>
       </Pane>
-      <Hyperlink fx:id="hlSair" layoutX="9.0" layoutY="43.0" onAction="#gotoConfirmarSair" text="Sair" />
-      <Label layoutX="16.0" layoutY="386.0" text="Saldo Total">
+      <Hyperlink fx:id="hlSair" layoutX="14.0" layoutY="110.0" onAction="#gotoConfirmarSair" text="Sair" />
+      <Label layoutX="10.0" layoutY="429.0" text="Saldo Total">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="16.0" layoutY="405.0" text="R$">
+      <Label layoutX="10.0" layoutY="448.0" text="R$">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lbValorSaldo" layoutX="42.0" layoutY="390.0" prefHeight="70.0" prefWidth="168.0" text="0,00">
+      <Label fx:id="lbValorSaldo" layoutX="33.0" layoutY="433.0" prefHeight="70.0" prefWidth="132.0" text="0,00">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" fill="DODGERBLUE" height="53.0" layoutX="-14.0" layoutY="391.0" smooth="false" stroke="#1e90fff2" strokeType="INSIDE" width="20.0" />
+      <Rectangle arcHeight="5.0" fill="DODGERBLUE" height="53.0" layoutX="-14.0" layoutY="434.0" smooth="false" stroke="#1e90fff2" strokeType="INSIDE" width="20.0" />
+      <Circle fill="#e4e4e4" layoutX="42.0" layoutY="39.0" radius="25.0" stroke="TRANSPARENT" strokeType="INSIDE" />
    </children>
 </Pane>

@@ -151,7 +151,8 @@ public class CriarReceitaController extends PoupazudoController implements
 		
 		receita.setConta(cbConta.getValue());
 		receita.setDescricao(taDescricao.getText());
-
+		receita.setData(tfDataReceita.getText());
+		
 		if (slRecorrenciaReceita.getValue() >= 0 && slRecorrenciaReceita.getValue() < 0.5) {
 			receita.setRecorrencia(TipoRecorrencia.NENHUMA);
 		} else if (slRecorrenciaReceita.getValue() > 1.0 && slRecorrenciaReceita.getValue() <= 2.0) {

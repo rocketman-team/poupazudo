@@ -1,19 +1,20 @@
 package poupazudo.util;
 
+
 public class Data {
 
-	public static final String JAN = "JANEIRO";
-	public static final String FEV = "FEVEREIRO";
-	public static final String MAR = "MARÇO";
-	public static final String ABR = "ABRIL";
-	public static final String MAI = "MAIO";
-	public static final String JUN = "JUNHO";
-	public static final String JUL = "JULHO";
-	public static final String AGO = "AGOSTO";
-	public static final String SET = "SETEMBRO";
-	public static final String OUT = "OUTUBRO";
-	public static final String NOV = "NOVEMBRO";
-	public static final String DEZ = "DEZEMBRO";
+	public static final String JAN = "JAN";
+	public static final String FEV = "FEV";
+	public static final String MAR = "MAR";
+	public static final String ABR = "ABR";
+	public static final String MAI = "MAI";
+	public static final String JUN = "JUN";
+	public static final String JUL = "JUL";
+	public static final String AGO = "AGO";
+	public static final String SET = "SET";
+	public static final String OUT = "OUT";
+	public static final String NOV = "NOV";
+	public static final String DEZ = "DEZ";
 	
 	public static String mesPorId(int id) {
 		String meses[] = {JAN, FEV, MAR, ABR, MAI, JUN, JUL, AGO, SET, OUT, NOV, DEZ};
@@ -22,5 +23,20 @@ public class Data {
 			if (id == i) return meses[i-1];
 
 		return null;
+	}
+	
+	public static int getDia(String data) {
+		String[] d = data.split("/");
+		return Integer.parseInt(d[1]);
+	}
+	
+	public static int getMes(String data) {
+		String[] d = data.split("/");
+		return Integer.parseInt(d[0]);
+	}
+	
+	public static int getAno(String data) {
+		String[] d = data.split("/");
+		return Integer.parseInt(d[2]);
 	}
 }

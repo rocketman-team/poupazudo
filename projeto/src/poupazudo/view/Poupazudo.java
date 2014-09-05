@@ -34,10 +34,7 @@ public class Poupazudo extends Application {
 		Scene scene = new Scene(painel);
 		scene.getStylesheets().add(FXML_PATH + "application.css");
 		stage.setTitle("Poupazudo");
-		stage.setMaxHeight(500);
-		stage.setMinHeight(500);
-		stage.setMaxWidth(800);
-		stage.setMinWidth(800);
+		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.show();	
 	}

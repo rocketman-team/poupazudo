@@ -1,6 +1,7 @@
 package poupazudo.controller;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -19,6 +20,7 @@ import javafx.scene.layout.Pane;
 import poupazudo.enuns.TipoRecorrencia;
 import poupazudo.enuns.TipoTela;
 import poupazudo.model.Despesa;
+import poupazudo.util.Data;
 import poupazudo.util.Filtro;
 
 public class CriarDespesaController extends PoupazudoController implements
@@ -162,6 +164,7 @@ public class CriarDespesaController extends PoupazudoController implements
 		
 		despesa.setConta(cbConta.getValue());
 		despesa.setDescricao(taDescricao.getText());
+		despesa.setData(tfDataDespesa.getText());
 
 		if (slRecorrenciaDespesa.getValue() >= 0 && slRecorrenciaDespesa.getValue() < 0.5) {
 			despesa.setRecorrencia(TipoRecorrencia.NENHUMA);

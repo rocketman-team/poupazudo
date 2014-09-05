@@ -9,6 +9,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -186,6 +190,13 @@ public class PainelPrincipalController extends PoupazudoController implements
 	@FXML
 	private Slider slDespesaFiltroMes;
 	
+	final CategoryAxis xAxis1 = new CategoryAxis();
+	
+    final NumberAxis yAxis1 = new NumberAxis();
+    
+    @FXML
+    final LineChart<String, Number> lcRelatorio = new LineChart<String,Number>(xAxis1,yAxis1);
+    
 	private double saldoTotal;
 
 	private boolean flag = true;
@@ -206,7 +217,33 @@ public class PainelPrincipalController extends PoupazudoController implements
 		observarTabelaDespesas();
 		observarTabelaReceitas();
 		observarTrocaDeMeses();
+		
 	}
+
+	private void desenharGraficoRelatorio() {
+		xAxis1.setLabel("Month");
+		yAxis1.setLabel("Saldo");
+		
+        XYChart.Series series1 = new XYChart.Series();
+        series1.setName("Despesas");
+        
+        XYChart.Series series2 = new XYChart.Series();
+        series2.setName("Receitas");
+        
+        if (usuarioLocal.getTransacoes() != null) {
+	         for (Transacao transacao : usuarioLocal.getTransacoes()) {
+	        	String mes = Data.mesPorId(Data.getDia(transacao.getData())).toString();
+	        	if (transacao.getTipo() == TipoTransacao.DESPESA)  {
+	        		series1.getData().add(new XYChart.Data(mes, transacao.getSaldoAtualTransacao()));
+	        	} else {
+	        		series2.getData().add(new XYChart.Data(mes, transacao.getSaldoAtualTransacao()));
+	        	}
+	        }
+        }
+
+        lcRelatorio.getData().addAll(series1, series2);
+	}
+
 
 	private void inicializaTabelaDeContas() {
 		tcCorConta.setCellValueFactory(new PropertyValueFactory<Conta, String>("cor"));
@@ -343,9 +380,12 @@ public class PainelPrincipalController extends PoupazudoController implements
 
 			tvListaDespesas.setItems(listaDespesas);
 			tvListaReceitas.setItems(listaReceitas);
-
+			
+			desenharGraficoRelatorio();
+			
 			flag = false;
 		}
+
 	}
 
 	private void clean() {
@@ -356,6 +396,7 @@ public class PainelPrincipalController extends PoupazudoController implements
 		listaContas.clear();
 		listaDespesas.clear();
 		listaReceitas.clear();
+		lcRelatorio.getData().clear();
 	}
 
 	@FXML

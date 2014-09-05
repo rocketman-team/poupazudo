@@ -13,9 +13,9 @@ public class Transacao {
 
 	private TipoTransacao tipoTransacao;
 	
-	private Calendar calendario;
+	private Relatorio relatorio;
 
-	private DateFormat data;
+	private String data;
 
 	private String categoria;
 
@@ -46,14 +46,14 @@ public class Transacao {
 	private SimpleDoubleProperty saldoPrevistoTransacao;
 
 	public Transacao(String nome, Double valor, String categoria) {
-		this.corTransacao = new SimpleStringProperty("");
+		this.corTransacao = new SimpleStringProperty();
 		this.nomeTransacao = new SimpleStringProperty(nome);
 		this.categoriaTransacao = new SimpleStringProperty(categoria);
 		this.saldoAtualTransacao = new SimpleDoubleProperty(valor);
 		this.saldoPrevistoTransacao = new SimpleDoubleProperty(valor);
 	}
 	
-	public Transacao(SimpleDateFormat data, String categoria,
+	public Transacao(String data, String categoria,
 			TipoRecorrencia recorrencia, String descricao, String conta,
 			int repeticao, boolean fixo) {
 		this.data = data;
@@ -63,11 +63,7 @@ public class Transacao {
 		this.conta = conta;
 		this.repeticao = repeticao;
 		this.fixo = fixo;
-
 		ocorrencias = repeticao * recorrencia.getValor();
-		calendario = data.getCalendar();
-		dia_semana = calendario.get(Calendar.DAY_OF_WEEK);
-		dia_mes = calendario.get(Calendar.DAY_OF_MONTH);
 	}
 
 	public int getRepeticao() {
@@ -78,11 +74,11 @@ public class Transacao {
 		this.repeticao = repeticao;
 	}
 
-	public DateFormat getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(DateFormat data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 
