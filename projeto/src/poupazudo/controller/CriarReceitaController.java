@@ -18,6 +18,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import poupazudo.enuns.TipoRecorrencia;
 import poupazudo.enuns.TipoTela;
+import poupazudo.model.Categoria;
 import poupazudo.model.Receita;
 import poupazudo.util.Filtro;
 
@@ -117,30 +118,25 @@ public class CriarReceitaController extends PoupazudoController implements
 	public void setTela(Tela tela) {
 		controlador = tela;
 	}
-
+	
+	@FXML
+	protected void adicionaNovaCategoria() {
+		
+		if (!tfNovaCategoria.getText().isEmpty()) {
+			usuarioLocal.adicionarCategoria(new Categoria(tfNovaCategoria.getText(), cpCorCategoria.getPromptText()));
+			cbCategoria.setPromptText(tfNovaCategoria.getText());
+			salvar();
+			clean();
+			habilitarFormReceita();
+		}
+	}
+	
 	@FXML
 	protected void gotoPainelPrincipal() {
 		clean();
 		controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 	}
 
-	@FXML
-	protected void toggleReceitaEfetuada() {
-		lbRecorrencia.setOpacity(.5);
-		lbRecorrenciaNenhuma.setOpacity(.5);
-		lbRecorrenciaSemanal.setOpacity(.5);
-		lbRecorrenciaMensal.setOpacity(.5);
-		slRecorrenciaReceita.setDisable(true);
-	}
-
-	@FXML
-	protected void toggleReceitaFixa() {
-		lbRecorrencia.setOpacity(1);
-		lbRecorrenciaNenhuma.setOpacity(1);
-		lbRecorrenciaSemanal.setOpacity(1);
-		lbRecorrenciaMensal.setOpacity(1);
-		slRecorrenciaReceita.setDisable(false);
-	}
 
 	@FXML
 	protected void gotoConfirmarCriarReceita() {
@@ -168,15 +164,24 @@ public class CriarReceitaController extends PoupazudoController implements
 	}
 
 	@FXML
+	protected void criarNovaConta() {
+		controlador.setTela(TipoTela.TELA_CRIAR_TIPO_CONTA);
+	}
+	
+	@FXML
 	protected void carregarDados() {
 		if (flag) {
 			cbConta.getItems().addAll(Filtro.filtroConta(usuarioLocal.getContas()));
+			cbCategoria.getItems().addAll(Filtro.filtroCategoria(usuarioLocal.getCategorias()));
 			flag = false;
 		}
 	}
 	
 	private void clean() {
+		cbConta.getItems().clear();
+		cbCategoria.getItems().clear();
 		flag = true;
+		carregarDados();
 	}
 	
 	@FXML
@@ -196,7 +201,20 @@ public class CriarReceitaController extends PoupazudoController implements
 	}
 
 	@FXML
-	protected void criarNovaConta() {
-		controlador.setTela(TipoTela.TELA_CRIAR_TIPO_CONTA);
+	protected void toggleReceitaEfetuada() {
+		lbRecorrencia.setOpacity(.5);
+		lbRecorrenciaNenhuma.setOpacity(.5);
+		lbRecorrenciaSemanal.setOpacity(.5);
+		lbRecorrenciaMensal.setOpacity(.5);
+		slRecorrenciaReceita.setDisable(true);
+	}
+
+	@FXML
+	protected void toggleReceitaFixa() {
+		lbRecorrencia.setOpacity(1);
+		lbRecorrenciaNenhuma.setOpacity(1);
+		lbRecorrenciaSemanal.setOpacity(1);
+		lbRecorrenciaMensal.setOpacity(1);
+		slRecorrenciaReceita.setDisable(false);
 	}
 }

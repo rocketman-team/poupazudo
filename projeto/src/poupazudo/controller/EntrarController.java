@@ -18,6 +18,7 @@ import poupazudo.exceptions.NomeIncorretoException;
 import poupazudo.exceptions.SenhaIncorrentaException;
 import poupazudo.exceptions.SenhaInseguraException;
 import poupazudo.exceptions.UsuarioInexistenteException;
+import poupazudo.util.Arquivo;
 
 public class EntrarController extends PoupazudoController implements
 		Initializable, TelasController {
@@ -53,6 +54,13 @@ public class EntrarController extends PoupazudoController implements
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		try {
+			if (Arquivo.getUsuarioTemp() != null)
+				tfEmail.setText(Arquivo.getUsuarioTemp().getEmail());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
@@ -62,8 +70,9 @@ public class EntrarController extends PoupazudoController implements
 
 		try {
 
-			//logar(tfEmail.getText(), pfSenha.getText());
-			logar("jef@gmail.com", "12345678");
+			logar(tfEmail.getText(), pfSenha.getText());
+			//logar("jef@gmail.com", "12345678");
+			Arquivo.salvar(poupazudo.pesquisar(tfEmail.getText()));
 			controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 		} catch (UsuarioInexistenteException e) {
 			// TODO mostrar usuario inexistente;

@@ -101,6 +101,12 @@ public class PainelPrincipalController extends PoupazudoController implements
 	private Hyperlink hlAdicionaReceita;
 
 	@FXML
+	private Hyperlink hlEditarContaSelecionada;
+	
+	@FXML
+	private Hyperlink hlRemoverContaSelecionada;
+	
+	@FXML
 	private Hyperlink hlEditarDespesaSelecionada;
 
 	@FXML
@@ -181,21 +187,21 @@ public class PainelPrincipalController extends PoupazudoController implements
 	@FXML
 	private TableColumn<Transacao, Double> tcReceitaSaldoAtual;
 	
+	@FXML
+	private Slider slDespesaFiltroMes;
+
+	final CategoryAxis eixoX = new CategoryAxis();
+	
+    final NumberAxis eixoY = new NumberAxis();
+    
+    @FXML
+    final LineChart<String, Number> lcRelatorio = new LineChart<String, Number>(eixoX, eixoY);
+    
 	private ObservableList<Conta> listaContas = FXCollections.observableArrayList();
 
 	private ObservableList<Transacao> listaDespesas = FXCollections.observableArrayList();
 
 	private ObservableList<Transacao> listaReceitas = FXCollections.observableArrayList();
-	
-	@FXML
-	private Slider slDespesaFiltroMes;
-	
-	final CategoryAxis xAxis1 = new CategoryAxis();
-	
-    final NumberAxis yAxis1 = new NumberAxis();
-    
-    @FXML
-    final LineChart<String, Number> lcRelatorio = new LineChart<String,Number>(xAxis1,yAxis1);
     
 	private double saldoTotal;
 
@@ -221,27 +227,27 @@ public class PainelPrincipalController extends PoupazudoController implements
 	}
 
 	private void desenharGraficoRelatorio() {
-		xAxis1.setLabel("Month");
-		yAxis1.setLabel("Saldo");
+		eixoX.setLabel("Month");
+		eixoY.setLabel("Saldo");
 		
-        XYChart.Series series1 = new XYChart.Series();
-        series1.setName("Despesas");
+        XYChart.Series<String, Number> serieDespesa = new XYChart.Series<String, Number>();
+        serieDespesa.setName("Despesas");
         
-        XYChart.Series series2 = new XYChart.Series();
-        series2.setName("Receitas");
+        XYChart.Series<String, Number> serieReceita = new XYChart.Series<String, Number>();
+        serieReceita.setName("Receitas");
         
         if (usuarioLocal.getTransacoes() != null) {
 	         for (Transacao transacao : usuarioLocal.getTransacoes()) {
 	        	String mes = Data.mesPorId(Data.getDia(transacao.getData())).toString();
 	        	if (transacao.getTipo() == TipoTransacao.DESPESA)  {
-	        		series1.getData().add(new XYChart.Data(mes, transacao.getSaldoAtualTransacao()));
+	        		serieDespesa.getData().add(new XYChart.Data(mes, transacao.getSaldoAtualTransacao()));
 	        	} else {
-	        		series2.getData().add(new XYChart.Data(mes, transacao.getSaldoAtualTransacao()));
+	        		serieReceita.getData().add(new XYChart.Data(mes, transacao.getSaldoAtualTransacao()));
 	        	}
 	        }
         }
 
-        lcRelatorio.getData().addAll(series1, series2);
+        lcRelatorio.getData().addAll(serieDespesa, serieReceita);
 	}
 
 
@@ -355,6 +361,36 @@ public class PainelPrincipalController extends PoupazudoController implements
 				});
 	}
 
+	@FXML
+	protected void editarContaSelecionada() {
+		
+	}
+	
+	@FXML
+	protected void removerContaSelecionada() {
+		
+	}
+	
+	@FXML
+	protected void editarReceitaSelecionada() {
+		
+	}
+	
+	@FXML
+	protected void removerReceitaSelecionada() {
+		
+	}
+	
+	@FXML
+	protected void editarDespesaSelecionada() {
+		
+	}
+	
+	@FXML
+	protected void removerDespesaSelecionada() {
+		
+	}
+	
 	@FXML
 	protected void carregarCampos() {
 		lbNomeUsuario.setText(usuarioLocal.getNome());

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.HBox?>
 
-<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poupazudo.controller.EntrarController">
+<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poupazudo.controller.EntrarController">
    <children>
-      <Pane layoutX="249.0" layoutY="99.0" prefHeight="359.0" prefWidth="299.0">
+      <Pane layoutX="301.0" layoutY="162.0" prefHeight="359.0" prefWidth="299.0">
          <children>
             <Label layoutX="33.0" layoutY="55.0" text="Email" />
             <Label layoutX="33.0" layoutY="125.0" text="Senha" />
@@ -20,6 +21,15 @@
          </children>
       </Pane>
       <Hyperlink fx:id="hlAjuda" disable="true" layoutX="723.0" layoutY="431.0" onAction="#mostrarAjuda" text="Ajuda?" />
-      <Hyperlink fx:id="hlSair" layoutX="743.0" layoutY="28.0" onAction="#sairDaAplicacao" text="Sair" />
+      <Hyperlink fx:id="hlSair" layoutX="802.0" layoutY="30.0" onAction="#sairDaAplicacao" text="Sair" />
+      <Pane fx:id="tooltipAviso" layoutX="164.0" layoutY="116.0" prefHeight="35.0" prefWidth="573.0" style="-fx-background-color: #f83d33;">
+         <children>
+            <Label fx:id="tooltipAvisoTexto" alignment="CENTER" layoutX="6.0" layoutY="7.0" prefHeight="20.0" prefWidth="561.0" text="Usuário não existe!" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </Pane>

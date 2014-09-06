@@ -20,16 +20,25 @@ public class CriarTipoDeContaController extends PoupazudoController implements
 	private Tela controlador;
 
 	@FXML
-	private Label lbSaldoInicial, lbTitulo;
+	private Label lbSaldoInicial;
+	
+	@FXML
+	private Label lbTitulo;
 
 	@FXML
-	private TextField tfSaldoInicial, tfTitulo;
+	private TextField tfSaldoInicial;
+	
+	@FXML
+	private TextField tfTitulo;
 
 	@FXML
 	private CheckBox rbIncluirNoSaldoGeral;
 
 	@FXML
-	private Hyperlink hlSaldoGeral, hlCancelar;
+	private Hyperlink hlSaldoGeral;
+
+	@FXML
+	private Hyperlink hlCancelar;
 
 	@FXML
 	private ColorPicker cpCorDeIdentificacao;

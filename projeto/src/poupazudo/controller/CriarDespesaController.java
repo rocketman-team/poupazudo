@@ -1,7 +1,6 @@
 package poupazudo.controller;
 
 import java.net.URL;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -19,8 +18,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import poupazudo.enuns.TipoRecorrencia;
 import poupazudo.enuns.TipoTela;
+import poupazudo.model.Categoria;
 import poupazudo.model.Despesa;
-import poupazudo.util.Data;
 import poupazudo.util.Filtro;
 
 public class CriarDespesaController extends PoupazudoController implements
@@ -60,7 +59,7 @@ public class CriarDespesaController extends PoupazudoController implements
 
 	@FXML
 	private Hyperlink hlAdicionarConta;
-
+	
 	@FXML
 	private Hyperlink hlCancelar;
 
@@ -117,13 +116,19 @@ public class CriarDespesaController extends PoupazudoController implements
 	@FXML
 	protected void carregarDados() {
 		if (flag) {
-			cbConta.getItems().addAll(Filtro.filtroConta(usuarioLocal.getContas()));
+			cbConta.getItems().addAll(
+					Filtro.filtroConta(usuarioLocal.getContas()));
+			cbCategoria.getItems().addAll(
+					Filtro.filtroCategoria(usuarioLocal.getCategorias()));
 			flag = false;
 		}
 	}
-	
+
 	private void clean() {
+		cbConta.getItems().clear();
+		cbCategoria.getItems().clear();
 		flag = true;
+		carregarDados();
 	}
 
 	@Override
@@ -132,36 +137,33 @@ public class CriarDespesaController extends PoupazudoController implements
 	}
 
 	@FXML
+	protected void adicionaNovaCategoria() {
+		if (!tfNovaCategoria.getText().isEmpty()) {
+			usuarioLocal.adicionarCategoria(new Categoria(tfNovaCategoria.getText(), cpCorCategoria.getPromptText()));
+			cbCategoria.setPromptText(tfNovaCategoria.getText());
+			salvar();
+			clean();
+			habilitarFormDespesa();
+		}
+	}
+
+	@FXML
 	protected void gotoPainelPrincipal() {
 		clean();
 		controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 	}
 
-	@FXML
-	protected void toggleDespesaEfetuada() {
-		lbRecorrencia.setOpacity(.5);
-		lbRecorrenciaNenhuma.setOpacity(.5);
-		lbRecorrenciaSemanal.setOpacity(.5);
-		lbRecorrenciaMensal.setOpacity(.5);
-		slRecorrenciaDespesa.setDisable(true);
-	}
 
-	@FXML
-	protected void toggleDespesaFixa() {
-		lbRecorrencia.setOpacity(1);
-		lbRecorrenciaNenhuma.setOpacity(1);
-		lbRecorrenciaSemanal.setOpacity(1);
-		lbRecorrenciaMensal.setOpacity(1);
-		slRecorrenciaDespesa.setDisable(false);
-	}
 
 	@FXML
 	protected void gotoConfirmarCriarDespesa() {
 
+		//Tratar erros aqui ..
+		
 		Despesa despesa = new Despesa(tfNomeDespesa.getText(),
 				Double.parseDouble(tfValorDespesa.getText()),
 				cbCategoria.getValue());
-		
+
 		despesa.setConta(cbConta.getValue());
 		despesa.setDescricao(taDescricao.getText());
 		despesa.setData(tfDataDespesa.getText());
@@ -181,6 +183,11 @@ public class CriarDespesaController extends PoupazudoController implements
 	}
 
 	@FXML
+	protected void criarNovaConta() {
+		controlador.setTela(TipoTela.TELA_CRIAR_TIPO_CONTA);
+	}
+	
+	@FXML
 	protected void habilitarFormDespesa() {
 		formNovaCategoria.setDisable(true);
 		formNovaCategoria.setOpacity(0);
@@ -195,10 +202,22 @@ public class CriarDespesaController extends PoupazudoController implements
 		formNovaCategoria.setOpacity(1);
 		formNovaCategoria.setDisable(false);
 	}
-
+	
 	@FXML
-	protected void criarNovaConta() {
-		controlador.setTela(TipoTela.TELA_CRIAR_TIPO_CONTA);
+	protected void toggleDespesaEfetuada() {
+		lbRecorrencia.setOpacity(.5);
+		lbRecorrenciaNenhuma.setOpacity(.5);
+		lbRecorrenciaSemanal.setOpacity(.5);
+		lbRecorrenciaMensal.setOpacity(.5);
+		slRecorrenciaDespesa.setDisable(true);
 	}
 
+	@FXML
+	protected void toggleDespesaFixa() {
+		lbRecorrencia.setOpacity(1);
+		lbRecorrenciaNenhuma.setOpacity(1);
+		lbRecorrenciaSemanal.setOpacity(1);
+		lbRecorrenciaMensal.setOpacity(1);
+		slRecorrenciaDespesa.setDisable(false);
+	}
 }
