@@ -13,7 +13,15 @@ public class Conta {
 	
 	private SimpleDoubleProperty saldoAtual;
 
-	public Conta(String nome, double saldo, String cor) {
+	public Conta(String nome, double saldo, String cor) throws Exception{
+		
+		if (nome == null)
+			throw new Exception("Nome inválido.");
+		if (saldo < 0)
+			throw new Exception ("Saldo inválido");
+		if (cor == null)
+			throw new Exception("Cor inválida.");
+		
 		this.cor = new SimpleStringProperty(cor);
 		this.nome = new SimpleStringProperty(nome);
 		this.saldoPrevisto = new SimpleDoubleProperty(saldo);
