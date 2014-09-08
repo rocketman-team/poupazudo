@@ -11,6 +11,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import poupazudo.enuns.TipoTela;
 import poupazudo.model.Conta;
 
@@ -24,6 +25,9 @@ public class CriarTipoDeContaController extends PoupazudoController implements
 	
 	@FXML
 	private Label lbTitulo;
+	
+	@FXML
+	private Label tooltipAvisoTexto;
 
 	@FXML
 	private TextField tfSaldoInicial;
@@ -42,6 +46,9 @@ public class CriarTipoDeContaController extends PoupazudoController implements
 
 	@FXML
 	private ColorPicker cpCorDeIdentificacao;
+	
+	@FXML
+	private Pane tooltipAviso;
 
 	@FXML
 	private Button btnAdicionar;
@@ -53,26 +60,42 @@ public class CriarTipoDeContaController extends PoupazudoController implements
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-
+		tooltipAviso.setVisible(false);
 	}
 
 	@FXML
 	protected void adicionarTipoDeConta() {
-				
-		try {
-			usuarioLocal.adicionarConta(new Conta(tfTitulo.getText(), Double
-					.parseDouble(tfSaldoInicial.getText()), cpCorDeIdentificacao.getPromptText().toString()));
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-		salvar();
-		controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
+		if (tfSaldoInicial.getText().length()==0) {
+			tfSaldoInicial.setText("0.0");
+		}
+
+		if (tfTitulo.getText().length()==0) {
+			tooltipAviso.setVisible(true);
+			tooltipAvisoTexto.setText("A conta deve possuir um nome!");
+		} else {
+			
+			try {
+				usuarioLocal.adicionarConta(new Conta(tfTitulo.getText(), Double
+						.parseDouble(tfSaldoInicial.getText()), cpCorDeIdentificacao.getPromptText().toString()));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			salvar();
+			clean();
+			controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
+			
+		}
+	}
+	
+	private void clean() {
+		tfSaldoInicial.clear();
+		tfTitulo.clear();
 	}
 
 	@FXML

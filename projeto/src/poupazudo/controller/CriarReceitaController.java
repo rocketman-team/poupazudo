@@ -180,6 +180,10 @@ public class CriarReceitaController extends PoupazudoController implements
 	private void clean() {
 		cbConta.getItems().clear();
 		cbCategoria.getItems().clear();
+		tfDataReceita.clear();
+		tfNomeReceita.clear();
+		tfNovaCategoria.clear();
+		tfValorReceita.clear();
 		flag = true;
 		carregarDados();
 	}

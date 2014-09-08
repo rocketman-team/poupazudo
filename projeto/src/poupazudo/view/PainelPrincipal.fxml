@@ -34,7 +34,7 @@
                      <content>
                         <Pane prefHeight="471.0" prefWidth="644.0" visible="false">
                            <children>
-                              <Hyperlink fx:id="hlAdicionarConta" layoutX="4.0" layoutY="15.0" onAction="#gotoAdicionarConta" text="Adicionar Conta" />
+                              <Hyperlink fx:id="hlAdicionarConta" layoutX="4.0" layoutY="30.0" onAction="#gotoAdicionarConta" text="Adicionar Conta" />
                               <TableView fx:id="tvListaContas" layoutX="6.0" layoutY="60.0" prefHeight="500.0" prefWidth="500.0">
                                  <columns>
                                     <TableColumn fx:id="tcCorConta" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" text="ID" />
@@ -130,7 +130,7 @@
                      <content>
                         <Pane prefHeight="459.0" prefWidth="723.0">
                            <children>
-                              <Hyperlink fx:id="hlAdicionarDespesa" layoutX="4.0" layoutY="15.0" onAction="#gotoCriarDespesa" text="Adicionar Despesa" />
+                              <Hyperlink fx:id="hlAdicionarDespesa" layoutX="4.0" layoutY="30.0" onAction="#gotoCriarDespesa" text="Adicionar Despesa" />
                               <TableView fx:id="tvListaDespesas" layoutX="6.0" layoutY="60.0" prefHeight="500.0" prefWidth="490.0">
                                  <columns>
                                     <TableColumn fx:id="tcCorDespesa" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" resizable="false" text="ID" />
@@ -285,7 +285,7 @@
                      <content>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Hyperlink fx:id="hlAdicionarReceita" layoutX="4.0" layoutY="15.0" onAction="#gotoCriarReceita" text="Adicionar Receita" />
+                              <Hyperlink fx:id="hlAdicionarReceita" layoutX="4.0" layoutY="30.0" onAction="#gotoCriarReceita" text="Adicionar Receita" />
                               <TableView fx:id="tvListaReceitas" layoutX="6.0" layoutY="60.0" prefHeight="500.0" prefWidth="490.0">
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -518,35 +518,5 @@
       </Label>
       <Rectangle arcHeight="5.0" fill="DODGERBLUE" height="53.0" layoutX="-14.0" layoutY="525.0" smooth="false" stroke="#1e90fff2" strokeType="INSIDE" width="20.0" />
       <Rectangle arcHeight="5.0" fill="#d0d0d0" height="53.0" layoutX="-14.0" layoutY="20.0" smooth="false" stroke="#1f93ff00" strokeType="INSIDE" width="20.0" />
-      <Pane layoutX="7.0" layoutY="160.0" prefHeight="53.0" prefWidth="161.0" style="-fx-background-color: #eeeeee;">
-         <children>
-            <Label layoutX="63.0" layoutY="13.0" text="Conta" textFill="#949494">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Circle fill="#dadada" layoutX="29.0" layoutY="27.0" radius="19.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-         </children>
-      </Pane>
-      <Pane layoutX="7.0" layoutY="218.0" prefHeight="53.0" prefWidth="161.0" style="-fx-background-color: #eeeeee;">
-         <children>
-            <Label layoutX="63.0" layoutY="13.0" text="Despesa" textFill="#949494">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Circle fill="#dadada" layoutX="29.0" layoutY="26.0" radius="19.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-         </children>
-      </Pane>
-      <Pane layoutX="7.0" layoutY="276.0" prefHeight="53.0" prefWidth="161.0" style="-fx-background-color: #eeeeee;">
-         <children>
-            <Label layoutX="63.0" layoutY="12.0" text="Receita" textFill="#949494">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Circle fill="#dadada" layoutX="29.0" layoutY="27.0" radius="19.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-         </children>
-      </Pane>
    </children>
 </Pane>

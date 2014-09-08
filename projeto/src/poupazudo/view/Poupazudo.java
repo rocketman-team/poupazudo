@@ -17,6 +17,7 @@ public class Poupazudo extends Application {
 	private static String criarDespesaFXML     = FXML_PATH + "CriarDespesa.fxml";
 	private static String criarReceitaFXML     = FXML_PATH + "CriarReceita.fxml";
 	private static String criarTipoDeContaFXML = FXML_PATH + "CriarTipoDeConta.fxml";
+	private static String recuperarSenhaFXML   = FXML_PATH + "RecuperarSenha.fxml";
 	private static String transicaoFXML        = FXML_PATH + "Transicao.fxml";
 
 	@Override
@@ -29,6 +30,7 @@ public class Poupazudo extends Application {
 		painel.carregarTela(TipoTela.TELA_CRIAR_DESPESA, Poupazudo.criarDespesaFXML);
 		painel.carregarTela(TipoTela.TELA_CRIAR_RECEITA, Poupazudo.criarReceitaFXML);
 		painel.carregarTela(TipoTela.TELA_CRIAR_TIPO_CONTA, Poupazudo.criarTipoDeContaFXML);
+		painel.carregarTela(TipoTela.TELA_RECUPERAR_SENHA, Poupazudo.recuperarSenhaFXML);
 		painel.carregarTela(TipoTela.TELA_TRANSICAO, Poupazudo.transicaoFXML);
 
 		painel.setTela(TipoTela.TELA_DE_LOGIN);

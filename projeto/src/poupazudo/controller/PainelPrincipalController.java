@@ -3,8 +3,6 @@ package poupazudo.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.sun.corba.se.impl.interceptors.CDREncapsCodec;
-
 import javafx.animation.FadeTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poupazudo.controller.RecuperarSenhaController">
+   <children>
+      <Pane layoutX="14.0" layoutY="188.0" prefHeight="167.0" prefWidth="811.0">
+         <children>
+            <Label layoutX="269.0" layoutY="14.0" text="Recuperar Senha">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfSenha" layoutX="269.0" layoutY="68.0" prefHeight="25.0" prefWidth="274.0" promptText="Informe seu email" />
+            <Button fx:id="btnRecuperarSenha" layoutX="435.0" layoutY="117.0" mnemonicParsing="false" onAction="#recuperarSenha" prefHeight="25.0" prefWidth="108.0" text="Recuperar" />
+            <Hyperlink fx:id="hlCancelar" layoutX="363.0" layoutY="118.0" onAction="#cancelarRecuperarSenha" text="Cancelar" />
+            <Label layoutX="270.0" layoutY="50.0" text="Informe seu email" textFill="#797777" />
+         </children>
+      </Pane>
+      <Pane fx:id="paneSolicitacaoEnviada" layoutX="161.0" prefHeight="525.0" prefWidth="579.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Label layoutX="3.0" layoutY="72.0" text="Verifique em sua caixa de email sua solicitação de recuperação se senha.">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="hlRetornar" layoutX="240.0" layoutY="114.0" onAction="#gotoTelaLogin" text="Acesse sua conta" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

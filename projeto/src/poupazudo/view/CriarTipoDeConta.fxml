@@ -12,12 +12,12 @@
       <Pane layoutX="296.0" layoutY="102.0" prefHeight="365.0" prefWidth="309.0">
          <children>
             <Label fx:id="lbSaldoInicial" layoutX="14.0" layoutY="65.0" prefHeight="17.0" prefWidth="120.0" text="Saldo inicial da conta" />
-            <TextField fx:id="tfSaldoInicial" alignment="CENTER_RIGHT" layoutX="14.0" layoutY="86.0" prefHeight="25.0" prefWidth="120.0" promptText="R$ 0.00" />
+            <TextField fx:id="tfSaldoInicial" alignment="CENTER_RIGHT" layoutX="14.0" layoutY="86.0" prefHeight="25.0" prefWidth="282.0" promptText="R$ 0.00" />
             <TextField fx:id="tfTitulo" layoutX="14.0" layoutY="150.0" prefHeight="25.0" prefWidth="165.0" />
             <Label fx:id="lbTitulo" layoutX="14.0" layoutY="129.0" text="Título" />
-            <CheckBox fx:id="rbIncluirNoSaldoGeral" layoutX="159.0" layoutY="85.0" mnemonicParsing="false" text="Incluir no " />
+            <CheckBox fx:id="rbIncluirNoSaldoGeral" layoutX="159.0" layoutY="85.0" mnemonicParsing="false" text="Incluir no " visible="false" />
             <ColorPicker fx:id="cpCorDeIdentificacao" layoutX="194.0" layoutY="149.0" prefHeight="25.0" prefWidth="104.0" />
-            <Hyperlink fx:id="hlSaldoGeral" layoutX="229.0" layoutY="82.0" onAction="#gotoPainelSaldoGeral" text="saldo geral" />
+            <Hyperlink fx:id="hlSaldoGeral" layoutX="229.0" layoutY="82.0" onAction="#gotoPainelSaldoGeral" text="saldo geral" visible="false" />
             <Button fx:id="btnAdicionar" layoutX="216.0" layoutY="217.0" mnemonicParsing="false" onAction="#adicionarTipoDeConta" prefHeight="25.0" prefWidth="82.0" text="Adicionar" />
             <Hyperlink fx:id="hlCancelar" layoutX="142.0" layoutY="218.0" onAction="#gotoPainelPrincipal" text="Cancelar" />
             <Label layoutX="13.0" layoutY="14.0" text="Nova Conta">

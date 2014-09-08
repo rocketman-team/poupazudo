@@ -13,19 +13,19 @@
       <Pane layoutX="169.0" layoutY="81.0" prefHeight="483.0" prefWidth="476.0">
          <children>
             <Label layoutX="22.0" layoutY="82.0" text="Nome" />
-            <TextField fx:id="tfNomeDeUsuario" layoutX="21.0" layoutY="102.0" prefHeight="25.0" prefWidth="212.0" />
-            <TextField fx:id="tfEmailDeUsuario" layoutX="22.0" layoutY="165.0" prefHeight="25.0" prefWidth="212.0" />
+            <TextField fx:id="tfNomeDeUsuario" layoutX="21.0" layoutY="102.0" onKeyPressed="#emFoco" prefHeight="25.0" prefWidth="212.0" />
+            <TextField fx:id="tfEmailDeUsuario" layoutX="22.0" layoutY="165.0" onKeyPressed="#emFoco" prefHeight="25.0" prefWidth="212.0" />
             <Label layoutX="23.0" layoutY="145.0" text="Email" />
             <Label layoutX="24.0" layoutY="210.0" text="Senha" />
             <Label layoutX="24.0" layoutY="274.0" text="Confirmar senha" />
-            <PasswordField fx:id="pfSenhaSeUsuario" layoutX="23.0" layoutY="230.0" prefHeight="25.0" prefWidth="212.0" />
-            <PasswordField fx:id="pfSenhaDeUsuarioConfirmar" layoutX="23.0" layoutY="294.0" prefHeight="25.0" prefWidth="212.0" />
-            <TextField fx:id="tfDicaDeSenhaDoUsuario" layoutX="23.0" layoutY="356.0" prefHeight="25.0" prefWidth="212.0" />
+            <PasswordField fx:id="pfSenhaSeUsuario" layoutX="23.0" layoutY="230.0" onKeyPressed="#emFoco" prefHeight="25.0" prefWidth="212.0" />
+            <PasswordField fx:id="pfSenhaDeUsuarioConfirmar" layoutX="23.0" layoutY="294.0" onKeyPressed="#emFoco" prefHeight="25.0" prefWidth="212.0" />
+            <TextField fx:id="tfDicaDeSenhaDoUsuario" layoutX="23.0" layoutY="356.0" onKeyPressed="#emFoco" prefHeight="25.0" prefWidth="212.0" />
             <Label layoutX="23.0" layoutY="336.0" text="Dica de senha" />
             <Button fx:id="btnCriarContaConfirmar" layoutX="146.0" layoutY="406.0" mnemonicParsing="false" onAction="#criarNovoUsuario" prefHeight="25.0" prefWidth="87.0" text="Criar conta" />
-            <Label fx:id="lbTooltipEmail" layoutX="286.0" layoutY="169.0" text="Email já associado a uma conta" textFill="RED" />
-            <Label fx:id="lbTooltipSenha" layoutX="286.0" layoutY="234.0" text="Senha muito curta" textFill="#ed7009" />
-            <Label fx:id="lbTooltipSenhaConfirmar" layoutX="286.0" layoutY="298.0" text="Senhas não combinam" textFill="#20d320" />
+            <Label fx:id="lbTooltipEmail" layoutX="286.0" layoutY="169.0" text="Email já associado a uma conta" textFill="RED" visible="false" />
+            <Label fx:id="lbTooltipSenha" layoutX="286.0" layoutY="234.0" text="Senha muito curta" textFill="#ed7009" visible="false" />
+            <Label fx:id="lbTooltipSenhaConfirmar" layoutX="286.0" layoutY="298.0" text="Senhas não combinam" textFill="#20d320" visible="false" />
             <Hyperlink fx:id="hlCancelarCriarConta" layoutX="75.0" layoutY="407.0" onAction="#gotoTelaDeLogin" text="Cancelar" />
             <Label layoutX="21.0" layoutY="26.0" text="Nova conta de Usuário">
                <font>
@@ -36,9 +36,9 @@
       </Pane>
       <Pane fx:id="tooltipAviso" layoutX="164.0" layoutY="27.0" prefHeight="35.0" prefWidth="579.0" style="-fx-background-color: #f83d33;">
          <children>
-            <Label fx:id="tooltipAvisoTexto" alignment="CENTER" layoutX="6.0" layoutY="7.0" prefHeight="20.0" prefWidth="566.0" text="A conta deve possuir um nome!" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="tooltipAvisoTexto" alignment="CENTER" layoutX="6.0" layoutY="5.0" prefHeight="20.0" prefWidth="566.0" text="A conta deve possuir um nome!" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
          </children>

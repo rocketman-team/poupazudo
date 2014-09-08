@@ -127,6 +127,10 @@ public class CriarDespesaController extends PoupazudoController implements
 	private void clean() {
 		cbConta.getItems().clear();
 		cbCategoria.getItems().clear();
+		tfDataDespesa.clear();
+		tfNomeDespesa.clear();
+		tfNovaCategoria.clear();
+		tfValorDespesa.clear();
 		flag = true;
 		carregarDados();
 	}

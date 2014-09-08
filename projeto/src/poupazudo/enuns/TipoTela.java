@@ -8,6 +8,7 @@ public enum TipoTela {
 	TELA_CRIAR_DESPESA("tela_add_despesa"),
 	TELA_CRIAR_RECEITA("tela_add_receita"),
 	TELA_CRIAR_TIPO_CONTA("tela_novo_tipo_conta"),
+	TELA_RECUPERAR_SENHA("tela_recuperar_senha"),
 	TELA_TRANSICAO("tela_transicao");
 	
 	public String nome;

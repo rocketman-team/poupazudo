@@ -101,7 +101,7 @@ public class EntrarController extends PoupazudoController implements
 
 	@FXML
 	protected void recuperarSenha(ActionEvent event) {
-		// TODO
+		controlador.setTela(TipoTela.TELA_RECUPERAR_SENHA);
 	}
 
 	@FXML

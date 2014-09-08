@@ -10,6 +10,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import poupazudo.enuns.TipoTela;
 import poupazudo.exceptions.EmailIncorretoException;
 import poupazudo.exceptions.NomeIncorretoException;
@@ -51,6 +52,12 @@ public class CriarContaController extends PoupazudoController implements
 
 	@FXML
 	private Label lbTooltipSenhaConfirmar;
+	
+	@FXML
+	private Label tooltipAvisoTexto;
+	
+	@FXML
+	private Pane tooltipAviso;
 
 	@Override
 	public void setTela(Tela tela) {
@@ -59,7 +66,7 @@ public class CriarContaController extends PoupazudoController implements
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		tooltipAviso.setVisible(false);
 	}
 	
 	@FXML
@@ -69,29 +76,37 @@ public class CriarContaController extends PoupazudoController implements
 			poupazudo.adicionar(new Usuario(tfNomeDeUsuario.getText(),
 					tfEmailDeUsuario.getText(), pfSenhaSeUsuario.getText(),
 					tfDicaDeSenhaDoUsuario.getText()));
-			
 			gotoTelaDeLogin();
 		} catch (UsuarioJaExisteException e) {
-			// TODO Mostrar que ja existe um usuario com esse nome
-			System.out.println("ja existe um usuario com esse nome");
+			tooltipAviso.setVisible(true);
+			tooltipAvisoTexto.setText("Já existe um usuário associado a este email!");
 		} catch (EmailIncorretoException e) {
-			// TODO Mostrar que o email está errado
-			System.out.println("email está errado");
+			tooltipAviso.setVisible(true);
+			tooltipAvisoTexto.setText("Email está incorreto!");
 		} catch (NomeIncorretoException e) {
-			// TODO Mostrar que o nome esta vazio
-			System.out.println("nome esta vazio");
+			tooltipAviso.setVisible(true);
+			tooltipAvisoTexto.setText("É necessário um nome de usuário!");
 		} catch (SenhaInseguraException e) {
-			// TODO Mostrar que a senha esta insegura
-			System.out.println("senha esta insegura");
+			tooltipAviso.setVisible(true);
+			tooltipAvisoTexto.setText("Senha está insegura! Digite uma nova senha.");
 		}
 
+		clean();
+	}
+
+	private void clean() {
 		tfNomeDeUsuario.clear();
 		tfEmailDeUsuario.clear();
 		tfDicaDeSenhaDoUsuario.clear();
 		pfSenhaDeUsuarioConfirmar.clear();
-		pfSenhaSeUsuario.clear();
+		pfSenhaSeUsuario.clear();	
 	}
-
+	
+	@FXML
+	protected void emFoco() {
+		tooltipAviso.setVisible(false);
+	}
+	
 	@FXML
 	protected void gotoTelaDeLogin() {
 		controlador.setTela(TipoTela.TELA_DE_LOGIN);
