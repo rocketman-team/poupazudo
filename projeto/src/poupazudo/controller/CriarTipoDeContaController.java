@@ -60,8 +60,16 @@ public class CriarTipoDeContaController extends PoupazudoController implements
 	@FXML
 	protected void adicionarTipoDeConta() {
 				
-		usuarioLocal.adicionarConta(new Conta(tfTitulo.getText(), Double
-				.parseDouble(tfSaldoInicial.getText()), cpCorDeIdentificacao.getPromptText().toString()));
+		try {
+			usuarioLocal.adicionarConta(new Conta(tfTitulo.getText(), Double
+					.parseDouble(tfSaldoInicial.getText()), cpCorDeIdentificacao.getPromptText().toString()));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		salvar();
 		controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);

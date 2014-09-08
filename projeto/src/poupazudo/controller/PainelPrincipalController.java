@@ -1,6 +1,7 @@
 package poupazudo.controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -92,6 +93,18 @@ public class PainelPrincipalController extends PoupazudoController implements
 	private Label lbReceitaRecorrenciaSelecionado;
 	
 	@FXML
+	private Label lbDesfazerNomeConta;
+	
+	@FXML
+	private Label lbDesfazerNomeDespesa;
+	
+	@FXML
+	private Label lbDesfazerNomeReceita;
+	
+	@FXML
+	private Label idConta, idDespesa, idReceita;
+	
+	@FXML
 	private Hyperlink hlAdicionarConta;
 
 	@FXML
@@ -119,6 +132,15 @@ public class PainelPrincipalController extends PoupazudoController implements
 	private Hyperlink hlRemoverReceitaSelecionada;
 	
 	@FXML
+	private Hyperlink hlDesfazerRemoverConta;
+	
+	@FXML
+	private Hyperlink hlDesfazerRemoverDespesa;
+	
+	@FXML
+	private Hyperlink hlDesfazerRemoverReceita;
+	
+	@FXML
 	private Hyperlink hlSair;
 
 	@FXML
@@ -135,6 +157,15 @@ public class PainelPrincipalController extends PoupazudoController implements
 
 	@FXML
 	private Pane paneDetalhesReceita;
+	
+	@FXML
+	private Pane tooltipAvisoConta;
+	
+	@FXML
+	private Pane tooltipAvisoDespesa;
+	
+	@FXML
+	private Pane tooltipAvisoReceita;
 	
 	@FXML
 	private TableView<Conta> tvListaContas;
@@ -306,6 +337,7 @@ public class PainelPrincipalController extends PoupazudoController implements
 									.formato(tvListaContas.getItems()
 											.get((Integer) currentRowIndex)
 											.getSaldoPrevisto()));
+							idConta.setText("" + (Integer) currentRowIndex);
 						}
 					}
 				});
@@ -331,6 +363,8 @@ public class PainelPrincipalController extends PoupazudoController implements
 									tvListaDespesas.getItems().get((Integer) currentRowIndex).getRecorrencia().toString().substring(0, 1) +
 									tvListaDespesas.getItems().get((Integer) currentRowIndex).getRecorrencia().toString().substring(1).toLowerCase());
 							taDespesaDescricaoSelecionado.setText(tvListaDespesas.getItems().get((Integer) currentRowIndex).getDescricao());
+							
+							idDespesa.setText(""+usuarioLocal.getTransacoes().indexOf(tvListaDespesas.getItems().get((Integer) currentRowIndex)));
 						}
 					}
 				});
@@ -356,6 +390,9 @@ public class PainelPrincipalController extends PoupazudoController implements
 									tvListaReceitas.getItems().get((Integer) currentRowIndex).getRecorrencia().toString().substring(0, 1) +
 									tvListaReceitas.getItems().get((Integer) currentRowIndex).getRecorrencia().toString().substring(1).toLowerCase());
 							taReceitaDescricaoSelecionado.setText(tvListaReceitas.getItems().get((Integer) currentRowIndex).getDescricao());
+							
+							idReceita.setText(""+usuarioLocal.getTransacoes().indexOf(tvListaReceitas.getItems().get((Integer) currentRowIndex)));
+							
 						}
 					}
 				});
@@ -368,7 +405,10 @@ public class PainelPrincipalController extends PoupazudoController implements
 	
 	@FXML
 	protected void removerContaSelecionada() {
-		
+		ultimaContaRemovida = usuarioLocal.getContas().get(Integer.valueOf(idConta.getText()));
+		usuarioLocal.removerConta(usuarioLocal.getContas().get(Integer.valueOf(idConta.getText())));
+		tvListaContas.getItems().remove(Integer.valueOf(idConta.getText()));
+		recarregarListas();		
 	}
 	
 	@FXML
@@ -378,7 +418,15 @@ public class PainelPrincipalController extends PoupazudoController implements
 	
 	@FXML
 	protected void removerReceitaSelecionada() {
-		
+		ultimaTransacaoRemovida = usuarioLocal.getTransacoes().get(Integer.valueOf(idReceita.getText()));
+		usuarioLocal.removerTransacao(ultimaTransacaoRemovida);
+		recarregarListas();
+	}
+	
+	private void recarregarListas() {
+		salvar();
+		clean();
+		carregarCampos();	
 	}
 	
 	@FXML
@@ -388,6 +436,27 @@ public class PainelPrincipalController extends PoupazudoController implements
 	
 	@FXML
 	protected void removerDespesaSelecionada() {
+		ultimaTransacaoRemovida = usuarioLocal.getTransacoes().get(Integer.valueOf(idDespesa.getText()));
+		//System.out.println(ultimaTransacaoRemovida.getNomeTransacao());
+		
+		usuarioLocal.removerTransacao(ultimaTransacaoRemovida);
+		
+		//usuarioLocal.removerTransacao(usuarioLocal.getTransacoes().get(Integer.valueOf(idDespesa.getText())));
+		recarregarListas();	
+	}
+	
+	@FXML
+	protected void desfazerRemoverConta() {
+		
+	}
+	
+	@FXML
+	protected void desfazerRemoverDespesa() {
+		
+	}
+	
+	@FXML
+	protected void desfazerRemoverReceita() {
 		
 	}
 	
@@ -395,7 +464,11 @@ public class PainelPrincipalController extends PoupazudoController implements
 	protected void carregarCampos() {
 		lbNomeUsuario.setText(usuarioLocal.getNome());
 		lbEmailUsuario.setText(usuarioLocal.getEmail());
+			
+		atualizar();
+	}
 
+	private void atualizar() {
 		if (flag) { // Faz com que o tableView Seja carregado apenas uma vez
 			saldoTotal = .0;
 			for (Conta c : usuarioLocal.getContas()) {
@@ -421,7 +494,6 @@ public class PainelPrincipalController extends PoupazudoController implements
 			
 			flag = false;
 		}
-
 	}
 
 	private void clean() {

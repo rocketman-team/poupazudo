@@ -1,11 +1,15 @@
 package poupazudo.controller;
 
+import java.util.List;
+
 import poupazudo.exceptions.EmailIncorretoException;
 import poupazudo.exceptions.NomeIncorretoException;
 import poupazudo.exceptions.SenhaIncorrentaException;
 import poupazudo.exceptions.SenhaInseguraException;
 import poupazudo.exceptions.UsuarioInexistenteException;
+import poupazudo.model.Conta;
 import poupazudo.model.GerenteDeUsuarios;
+import poupazudo.model.Transacao;
 import poupazudo.model.Usuario;
 
 public class PoupazudoController {
@@ -13,6 +17,10 @@ public class PoupazudoController {
 	protected static GerenteDeUsuarios poupazudo;
 
 	protected static Usuario usuarioLocal;
+	
+	protected static Conta ultimaContaRemovida;
+	
+	protected static Transacao ultimaTransacaoRemovida;
 
 	public PoupazudoController() {
 		

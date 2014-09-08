@@ -91,6 +91,22 @@
                                     <Hyperlink fx:id="hlEditarContaSelecionada" layoutX="12.0" layoutY="174.0" onAction="#editarContaSelecionada" text="Editar" />
                                     <Hyperlink fx:id="hlRemoverContaSelecionada" layoutX="59.0" layoutY="174.0" onAction="#removerContaSelecionada" text="Remover" />
                                     <Label layoutX="52.0" layoutY="177.0" text="/" textFill="#a4cdd7" />
+                                    <Label fx:id="idConta" layoutX="17.0" layoutY="216.0" text="ID" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="tooltipAvisoConta" layoutX="361.0" layoutY="10.0" prefHeight="30.0" prefWidth="348.0" style="-fx-background-color: #ffed56;">
+                                 <children>
+                                    <Label layoutX="9.0" layoutY="5.0" prefHeight="20.0" prefWidth="150.0" text="Você removeu a conta ">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lbDesfazerNomeConta" layoutX="151.0" layoutY="5.0" maxWidth="130.0" prefHeight="20.0" prefWidth="133.0" text="Carteira">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Hyperlink fx:id="hlDesfazerRemoverConta" layoutX="288.0" layoutY="4.0" onAction="#desfazerRemoverConta" text="Desfazer" />
                                  </children>
                               </Pane>
                            </children>
@@ -183,6 +199,22 @@
                                     </Label>
                                     <TextArea fx:id="taDespesaDescricaoSelecionado" editable="false" layoutX="16.0" layoutY="321.0" prefHeight="127.0" prefWidth="200.0" wrapText="true" />
                                     <Label layoutX="54.0" layoutY="506.0" text="/" textFill="#a4cdd7" />
+                                    <Label fx:id="idDespesa" layoutX="150.0" layoutY="200.0" text="ID" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="tooltipAvisoDespesa" layoutX="361.0" layoutY="10.0" prefHeight="30.0" prefWidth="348.0" style="-fx-background-color: #ffed56;">
+                                 <children>
+                                    <Label layoutX="9.0" layoutY="5.0" prefHeight="20.0" prefWidth="174.0" text="Você removeu a despesa">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lbDesfazerNomeDespesa" layoutX="167.0" layoutY="5.0" maxWidth="130.0" prefHeight="20.0" prefWidth="119.0" text="UFCG">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Hyperlink fx:id="hlDesfazerRemoverDespesa" layoutX="288.0" layoutY="4.0" onAction="#desfazerRemoverDespesa" text="Desfazer" />
                                  </children>
                               </Pane>
                            </children>
@@ -275,9 +307,25 @@
                                     </Label>
                                     <TextArea fx:id="taReceitaDescricaoSelecionado" editable="false" layoutX="16.0" layoutY="321.0" prefHeight="127.0" prefWidth="200.0" wrapText="true" />
                                     <Label layoutX="57.0" layoutY="516.0" text="/" textFill="#a4cdd7" />
+                                    <Label fx:id="idReceita" layoutX="136.0" layoutY="185.0" text="ID" />
                                  </children>
                               </Pane>
                               <Label layoutX="62.0" layoutY="187.0" text="/" textFill="#a4cdd7" />
+                              <Pane fx:id="tooltipAvisoReceita" layoutX="361.0" layoutY="10.0" prefHeight="30.0" prefWidth="348.0" style="-fx-background-color: #ffed56;">
+                                 <children>
+                                    <Label layoutX="9.0" layoutY="5.0" prefHeight="20.0" prefWidth="174.0" text="Você removeu a receita">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lbDesfazerNomeReceita" layoutX="158.0" layoutY="5.0" maxWidth="130.0" prefHeight="20.0" prefWidth="119.0" text="UFCG">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Hyperlink fx:id="hlDesfazerRemoverReceita" layoutX="288.0" layoutY="4.0" onAction="#desfazerRemoverDespesa" text="Desfazer" />
+                                 </children>
+                              </Pane>
                            </children>
                         </Pane>
                      </content>
