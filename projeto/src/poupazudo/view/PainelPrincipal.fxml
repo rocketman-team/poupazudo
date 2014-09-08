@@ -46,7 +46,7 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <Pane fx:id="paneDetalhesConta" layoutX="507.0" layoutY="60.0" prefHeight="351.0" prefWidth="208.0">
+                              <Pane fx:id="paneDetalhesConta" layoutX="507.0" layoutY="60.0" prefHeight="509.0" prefWidth="208.0">
                                  <children>
                                     <Label fx:id="lbNomeConta" layoutX="14.0" layoutY="7.0" maxWidth="350.0" prefHeight="35.0" prefWidth="198.0" text="Conta">
                                        <font>
@@ -91,17 +91,30 @@
                                     <Hyperlink fx:id="hlEditarContaSelecionada" layoutX="12.0" layoutY="174.0" onAction="#editarContaSelecionada" text="Editar" />
                                     <Hyperlink fx:id="hlRemoverContaSelecionada" layoutX="59.0" layoutY="174.0" onAction="#removerContaSelecionada" text="Remover" />
                                     <Label layoutX="52.0" layoutY="177.0" text="/" textFill="#a4cdd7" />
-                                    <Label fx:id="idConta" layoutX="17.0" layoutY="216.0" text="ID" />
+                                    <Label fx:id="idConta" layoutX="17.0" layoutY="216.0" text="ID" visible="false" />
+                                    <Pane fx:id="paneContaEditar" layoutX="5.0" layoutY="7.0" prefHeight="200.0" prefWidth="202.0" style="-fx-background-color: #ffffff;" visible="false">
+                                       <children>
+                                          <Label layoutX="22.0" layoutY="10.0" text="Editar Conta">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="tfNomeContaEditar" layoutX="24.0" layoutY="47.0" promptText="Nome da Conta" />
+                                          <TextField fx:id="tfSaldoContaEditar" layoutX="23.0" layoutY="88.0" promptText="Valor do saldo" />
+                                          <Button fx:id="btnConfirmarContaEditar" layoutX="90.0" layoutY="143.0" mnemonicParsing="false" onAction="#confirmarContaEditar" prefHeight="25.0" prefWidth="80.0" text="Confirmar" />
+                                          <Hyperlink fx:id="hlCancelarContaEditar" layoutX="23.0" layoutY="144.0" onAction="#cancelarContaEditar" text="Cancelar" />
+                                       </children>
+                                    </Pane>
                                  </children>
                               </Pane>
-                              <Pane fx:id="tooltipAvisoConta" layoutX="361.0" layoutY="10.0" prefHeight="30.0" prefWidth="348.0" style="-fx-background-color: #ffed56;">
+                              <Pane fx:id="tooltipAvisoConta" layoutX="361.0" layoutY="10.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-color: #ffed56;">
                                  <children>
                                     <Label layoutX="9.0" layoutY="5.0" prefHeight="20.0" prefWidth="150.0" text="Você removeu a conta ">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lbDesfazerNomeConta" layoutX="151.0" layoutY="5.0" maxWidth="130.0" prefHeight="20.0" prefWidth="133.0" text="Carteira">
+                                    <Label fx:id="lbDesfazerNomeConta" layoutX="151.0" layoutY="5.0" maxWidth="133.0" prefHeight="20.0" prefWidth="133.0" text="Carteira">
                                        <font>
                                           <Font name="System Bold" size="14.0" />
                                        </font>
@@ -199,7 +212,24 @@
                                     </Label>
                                     <TextArea fx:id="taDespesaDescricaoSelecionado" editable="false" layoutX="16.0" layoutY="321.0" prefHeight="127.0" prefWidth="200.0" wrapText="true" />
                                     <Label layoutX="54.0" layoutY="506.0" text="/" textFill="#a4cdd7" />
-                                    <Label fx:id="idDespesa" layoutX="150.0" layoutY="200.0" text="ID" />
+                                    <Label fx:id="idDespesa" layoutX="150.0" layoutY="200.0" text="ID" visible="false" />
+                                    <Pane fx:id="paneDespesaEditar" layoutX="2.0" layoutY="48.0" prefHeight="474.0" prefWidth="214.0" style="-fx-background-color: #ffffff;" visible="false">
+                                       <children>
+                                          <Label layoutX="22.0" layoutY="10.0" text="Editar Despesa">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="tfNomeDespesaEditar" layoutX="24.0" layoutY="47.0" promptText="Nome da Despesa" />
+                                          <TextField fx:id="tfSaldoDespesaEditar" layoutX="23.0" layoutY="88.0" promptText="Valor do saldo" />
+                                          <Button fx:id="btnConfirmarDespesaEditar" layoutX="90.0" layoutY="439.0" mnemonicParsing="false" onAction="#confirmarDespesaEditar" prefHeight="25.0" prefWidth="80.0" text="Confirmar" />
+                                          <Hyperlink fx:id="hlCancelarDespesaEditar" layoutX="23.0" layoutY="440.0" onAction="#cancelarDespesaEditar" text="Cancelar" />
+                                          <ComboBox fx:id="cbCategoriaDespesaEditar" layoutX="23.0" layoutY="129.0" prefWidth="150.0" promptText="Categoria" />
+                                          <ComboBox fx:id="cbContaDespesaEditar" layoutX="23.0" layoutY="170.0" prefWidth="150.0" promptText="Conta" />
+                                          <ComboBox fx:id="cbRecorrenciaDespesaEditar" layoutX="23.0" layoutY="212.0" prefWidth="150.0" promptText="Recorrência" />
+                                          <TextArea fx:id="taDescricaoDespesaEditar" layoutX="23.0" layoutY="254.0" prefHeight="162.0" prefWidth="175.0" promptText="Descrição" />
+                                       </children>
+                                    </Pane>
                                  </children>
                               </Pane>
                               <Pane fx:id="tooltipAvisoDespesa" layoutX="361.0" layoutY="10.0" prefHeight="30.0" prefWidth="348.0" style="-fx-background-color: #ffed56;">
@@ -307,7 +337,24 @@
                                     </Label>
                                     <TextArea fx:id="taReceitaDescricaoSelecionado" editable="false" layoutX="16.0" layoutY="321.0" prefHeight="127.0" prefWidth="200.0" wrapText="true" />
                                     <Label layoutX="57.0" layoutY="516.0" text="/" textFill="#a4cdd7" />
-                                    <Label fx:id="idReceita" layoutX="136.0" layoutY="185.0" text="ID" />
+                                    <Label fx:id="idReceita" layoutX="136.0" layoutY="185.0" text="ID" visible="false" />
+                                    <Pane fx:id="paneReceitaEditar" layoutY="51.0" prefHeight="495.0" prefWidth="214.0" style="-fx-background-color: #ffffff;" visible="false">
+                                       <children>
+                                          <Label layoutX="22.0" layoutY="10.0" text="Editar Receita">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="tfNomeReceitaEditar" layoutX="24.0" layoutY="47.0" promptText="Nome da Despesa" />
+                                          <TextField fx:id="tfSaldoReceitaEditar" layoutX="23.0" layoutY="88.0" promptText="Valor do saldo" />
+                                          <Button fx:id="btnConfirmarReceitaEditar" layoutX="90.0" layoutY="439.0" mnemonicParsing="false" onAction="#confirmarReceitaEditar" prefHeight="25.0" prefWidth="80.0" text="Confirmar" />
+                                          <Hyperlink fx:id="hlCancelarReceitaEditar" layoutX="23.0" layoutY="440.0" onAction="#cancelarReceitaEditar" text="Cancelar" />
+                                          <ComboBox fx:id="cbCategoriaReceitaEditar" layoutX="23.0" layoutY="129.0" prefWidth="150.0" promptText="Categoria" />
+                                          <ComboBox fx:id="cbContaReceitaEditar" layoutX="23.0" layoutY="170.0" prefWidth="150.0" promptText="Conta" />
+                                          <ComboBox fx:id="cbRecorrenciaReceitaEditar" layoutX="23.0" layoutY="212.0" prefWidth="150.0" promptText="Recorrência" />
+                                          <TextArea fx:id="taDescricaoReceitaEditar" layoutX="23.0" layoutY="254.0" prefHeight="162.0" prefWidth="175.0" promptText="Descrição" />
+                                       </children>
+                                    </Pane>
                                  </children>
                               </Pane>
                               <Label layoutX="62.0" layoutY="187.0" text="/" textFill="#a4cdd7" />
@@ -323,7 +370,7 @@
                                           <Font name="System Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Hyperlink fx:id="hlDesfazerRemoverReceita" layoutX="288.0" layoutY="4.0" onAction="#desfazerRemoverDespesa" text="Desfazer" />
+                                    <Hyperlink fx:id="hlDesfazerRemoverReceita" layoutX="288.0" layoutY="4.0" onAction="#desfazerRemoverReceita" text="Desfazer" />
                                  </children>
                               </Pane>
                            </children>

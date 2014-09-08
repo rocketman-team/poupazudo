@@ -152,9 +152,7 @@ public class CriarDespesaController extends PoupazudoController implements
 		clean();
 		controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 	}
-
-
-
+	
 	@FXML
 	protected void gotoConfirmarCriarDespesa() {
 
@@ -165,6 +163,10 @@ public class CriarDespesaController extends PoupazudoController implements
 				cbCategoria.getValue());
 
 		despesa.setConta(cbConta.getValue());
+		
+		usuarioLocal.pesquisarConta(cbConta.getValue()).setSaldoAtual(
+				usuarioLocal.pesquisarConta(cbConta.getValue()).getSaldoAtual() - despesa.getSaldoAtualTransacao());
+		
 		despesa.setDescricao(taDescricao.getText());
 		despesa.setData(tfDataDespesa.getText());
 

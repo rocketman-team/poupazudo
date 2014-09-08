@@ -246,6 +246,14 @@ public class Usuario {
 		return false;
 	}
 	
+	public Conta pesquisarConta(String nome) {
+		for (Conta conta : contas)
+			if (conta.getNome().equals(nome))
+				return conta;
+
+		return null;
+	}
+	
 	public List<Conta> getContas() {
 		return contas;
 	}

@@ -9,8 +9,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import poupazudo.enuns.TipoTela;
 import poupazudo.exceptions.EmailIncorretoException;
@@ -45,6 +47,12 @@ public class EntrarController extends PoupazudoController implements
 
 	@FXML
 	private Hyperlink hlSair;
+	
+	@FXML
+	private Pane tooltipAviso;
+	
+	@FXML
+	private Label tooltipAvisoTexto;
 
 	@Override
 	public void setTela(Tela tela) {
@@ -61,6 +69,8 @@ public class EntrarController extends PoupazudoController implements
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		tooltipAviso.setVisible(false);
 	}
 
 	@FXML
@@ -69,17 +79,15 @@ public class EntrarController extends PoupazudoController implements
 			SenhaInseguraException {
 
 		try {
-
 			logar(tfEmail.getText(), pfSenha.getText());
-			//logar("jef@gmail.com", "12345678");
 			Arquivo.salvar(poupazudo.pesquisar(tfEmail.getText()));
 			controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 		} catch (UsuarioInexistenteException e) {
-			// TODO mostrar usuario inexistente;
-			System.out.println("usuario inexistente");
+			tooltipAvisoTexto.setText("Usuário inexistente!");
+			tooltipAviso.setVisible(true);
 		} catch (SenhaIncorrentaException e) {
-			// TODO mostrar senha incorreta
-			System.out.println("senha incorreta");
+			tooltipAvisoTexto.setText("Senha incorreta!");
+			tooltipAviso.setVisible(true);
 		}
 
 		tfEmail.clear();
@@ -99,6 +107,11 @@ public class EntrarController extends PoupazudoController implements
 	@FXML
 	protected void mostrarAjuda(ActionEvent event) {
 		// TODO
+	}
+	
+	@FXML
+	protected void campoSenhaEmFoco() {
+		tooltipAviso.setVisible(false);
 	}
 
 	@FXML

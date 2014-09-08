@@ -13,18 +13,18 @@
          <children>
             <Label layoutX="33.0" layoutY="55.0" text="Email" />
             <Label layoutX="33.0" layoutY="125.0" text="Senha" />
-            <TextField fx:id="tfEmail" layoutX="33.0" layoutY="77.0" prefHeight="25.0" prefWidth="234.0" />
+            <TextField fx:id="tfEmail" layoutX="33.0" layoutY="77.0" onKeyPressed="#campoSenhaEmFoco" prefHeight="25.0" prefWidth="234.0" />
             <Button fx:id="btnEntrar" layoutX="193.0" layoutY="197.0" mnemonicParsing="false" onAction="#efetuarLogin" prefHeight="25.0" prefWidth="74.0" text="Entrar" />
             <Hyperlink fx:id="hlRecuperarSenha" layoutX="33.0" layoutY="198.0" onAction="#recuperarSenha" text="Esqueceu sua senha?" />
             <Hyperlink fx:id="hlCriarConta" layoutX="102.0" layoutY="329.0" onAction="#criarConta" text="Criar nova conta" />
-            <PasswordField fx:id="pfSenha" layoutX="33.0" layoutY="147.0" prefHeight="25.0" prefWidth="234.0" />
+            <PasswordField fx:id="pfSenha" layoutX="33.0" layoutY="147.0" onKeyPressed="#campoSenhaEmFoco" prefHeight="25.0" prefWidth="234.0" />
          </children>
       </Pane>
-      <Hyperlink fx:id="hlAjuda" disable="true" layoutX="723.0" layoutY="431.0" onAction="#mostrarAjuda" text="Ajuda?" />
+      <Hyperlink fx:id="hlAjuda" disable="true" layoutX="781.0" layoutY="493.0" onAction="#mostrarAjuda" text="Ajuda?" />
       <Hyperlink fx:id="hlSair" layoutX="802.0" layoutY="30.0" onAction="#sairDaAplicacao" text="Sair" />
-      <Pane fx:id="tooltipAviso" layoutX="164.0" layoutY="116.0" prefHeight="35.0" prefWidth="573.0" style="-fx-background-color: #f83d33;">
+      <Pane fx:id="tooltipAviso" layoutX="275.0" layoutY="153.0" prefHeight="35.0" prefWidth="350.0" style="-fx-background-color: #f83d33;">
          <children>
-            <Label fx:id="tooltipAvisoTexto" alignment="CENTER" layoutX="6.0" layoutY="7.0" prefHeight="20.0" prefWidth="561.0" text="Usuário não existe!" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="tooltipAvisoTexto" alignment="CENTER" layoutX="6.0" layoutY="7.0" prefHeight="20.0" prefWidth="338.0" text="Usuário não existe!" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

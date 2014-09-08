@@ -53,14 +53,14 @@ public class Tela extends StackPane {
 			if (!getChildren().isEmpty()) {
 				Timeline fade = new Timeline(new KeyFrame(Duration.ZERO,
 						new KeyValue(opacity, 1.0)), new KeyFrame(new Duration(
-						250), new EventHandler<ActionEvent>() {
+						500), new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent t) {
 						getChildren().remove(0);
 						getChildren().add(0, telas.get(tipoTela.nome));
 						Timeline fadeIn = new Timeline(new KeyFrame(
 								Duration.ZERO, new KeyValue(opacity, 0.0)),
-								new KeyFrame(new Duration(250), new KeyValue(
+								new KeyFrame(new Duration(500), new KeyValue(
 										opacity, 1.0)));
 						fadeIn.play();
 					}
@@ -73,7 +73,7 @@ public class Tela extends StackPane {
 
 				Timeline fadeIn = new Timeline(new KeyFrame(Duration.ZERO,
 						new KeyValue(opacity, 0.0)), new KeyFrame(new Duration(
-						250), new KeyValue(opacity, 1.0)));
+						500), new KeyValue(opacity, 1.0)));
 				fadeIn.play();
 			}
 			return true;

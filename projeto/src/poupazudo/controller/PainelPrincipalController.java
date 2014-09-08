@@ -1,30 +1,40 @@
 package poupazudo.controller;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import com.sun.corba.se.impl.interceptors.CDREncapsCodec;
+
+import javafx.animation.FadeTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 import poupazudo.enuns.TipoTela;
 import poupazudo.enuns.TipoTransacao;
 import poupazudo.exceptions.UsuarioJaExisteException;
+import poupazudo.model.Categoria;
 import poupazudo.model.Conta;
 import poupazudo.model.Transacao;
 import poupazudo.util.Data;
@@ -141,6 +151,21 @@ public class PainelPrincipalController extends PoupazudoController implements
 	private Hyperlink hlDesfazerRemoverReceita;
 	
 	@FXML
+	private Hyperlink lhCancelarContaEditar;
+	
+	@FXML
+	private Hyperlink lhCancelarDespesaEditar;
+	
+	@FXML
+	private Hyperlink lhCancelarReceitaEditar;
+	
+	@FXML
+	private Button confirmarDespesaEditar;
+	
+	@FXML
+	private Button confirmarReceitaEditar;
+	
+	@FXML
 	private Hyperlink hlSair;
 
 	@FXML
@@ -159,6 +184,15 @@ public class PainelPrincipalController extends PoupazudoController implements
 	private Pane paneDetalhesReceita;
 	
 	@FXML
+	private Pane paneContaEditar;
+	
+	@FXML
+	private Pane paneDespesaEditar;
+	
+	@FXML
+	private Pane paneReceitaEditar;
+	
+	@FXML
 	private Pane tooltipAvisoConta;
 	
 	@FXML
@@ -166,6 +200,51 @@ public class PainelPrincipalController extends PoupazudoController implements
 	
 	@FXML
 	private Pane tooltipAvisoReceita;
+	
+	@FXML
+	private ComboBox<String> cbCategoriaDespesaEditar;
+	
+	@FXML
+	private ComboBox<String> cbCategoriaReceitaEditar;
+	
+	@FXML
+	private ComboBox<String> cbContaDespesaEditar;
+	
+	@FXML
+	private ComboBox<String> cbContaReceitaEditar;
+
+	@FXML
+	private ComboBox<String> cbRecorrenciaDespesaEditar;
+	
+	@FXML
+	private ComboBox<String> cbRecorrenciaReceitaEditar;
+	
+	@FXML
+	private Button btnConfirmarContaEditar;
+	
+	@FXML
+	private TextField tfNomeContaEditar;
+	
+	@FXML
+	private TextArea taDescricaoDespesaEditar;
+
+	@FXML
+	private TextArea taDescricaoReceitaEditar;
+	
+	@FXML
+	private TextField tfSaldoContaEditar;
+	
+	@FXML
+	private TextField tfNomeDespesaEditar;
+	
+	@FXML
+	private TextField tfSaldoDespesaEditar;
+	
+	@FXML
+	private TextField tfNomeReceitaEditar;
+	
+	@FXML
+	private TextField tfSaldoReceitaEditar;
 	
 	@FXML
 	private TableView<Conta> tvListaContas;
@@ -255,6 +334,10 @@ public class PainelPrincipalController extends PoupazudoController implements
 		observarTabelaReceitas();
 		observarTrocaDeMeses();
 		
+		tooltipAvisoConta.setVisible(false);
+		tooltipAvisoDespesa.setVisible(false);
+		tooltipAvisoReceita.setVisible(false);
+		
 	}
 
 	private void desenharGraficoRelatorio() {
@@ -338,6 +421,11 @@ public class PainelPrincipalController extends PoupazudoController implements
 											.get((Integer) currentRowIndex)
 											.getSaldoPrevisto()));
 							idConta.setText("" + (Integer) currentRowIndex);
+							tfNomeContaEditar.setText(tvListaContas.getItems()
+									.get((Integer) currentRowIndex).getNome());
+							tfSaldoContaEditar.setText(String.valueOf(tvListaContas.getItems()
+									.get((Integer) currentRowIndex).getSaldoAtual()));
+							
 						}
 					}
 				});
@@ -365,6 +453,14 @@ public class PainelPrincipalController extends PoupazudoController implements
 							taDespesaDescricaoSelecionado.setText(tvListaDespesas.getItems().get((Integer) currentRowIndex).getDescricao());
 							
 							idDespesa.setText(""+usuarioLocal.getTransacoes().indexOf(tvListaDespesas.getItems().get((Integer) currentRowIndex)));
+							tfNomeDespesaEditar.setText(lbNomeDespesa.getText());
+							tfSaldoDespesaEditar.setText(usuarioLocal.getTransacoes().get(Integer.valueOf(idDespesa.getText())).getSaldoAtualTransacao().toString());
+						
+							cbCategoriaDespesaEditar.setPromptText(lbDespesaCategoriaSelecionado.getText());
+							cbContaDespesaEditar.setPromptText(lbDespesaContaSelecionado.getText());
+							cbRecorrenciaDespesaEditar.setPromptText(lbDespesaRecorrenciaSelecionado.getText());
+							
+							taDescricaoDespesaEditar.setText(taDespesaDescricaoSelecionado.getText());
 						}
 					}
 				});
@@ -392,7 +488,14 @@ public class PainelPrincipalController extends PoupazudoController implements
 							taReceitaDescricaoSelecionado.setText(tvListaReceitas.getItems().get((Integer) currentRowIndex).getDescricao());
 							
 							idReceita.setText(""+usuarioLocal.getTransacoes().indexOf(tvListaReceitas.getItems().get((Integer) currentRowIndex)));
+							tfNomeReceitaEditar.setText(lbNomeReceita.getText());
+							tfSaldoReceitaEditar.setText(usuarioLocal.getTransacoes().get(Integer.valueOf(idReceita.getText())).getSaldoAtualTransacao().toString());
+						
+							cbCategoriaReceitaEditar.setPromptText(lbReceitaCategoriaSelecionado.getText());
+							cbContaReceitaEditar.setPromptText(lbReceitaContaSelecionado.getText());
+							cbRecorrenciaReceitaEditar.setPromptText(lbReceitaRecorrenciaSelecionado.getText());
 							
+							taDescricaoReceitaEditar.setText(taReceitaDescricaoSelecionado.getText());
 						}
 					}
 				});
@@ -400,20 +503,59 @@ public class PainelPrincipalController extends PoupazudoController implements
 
 	@FXML
 	protected void editarContaSelecionada() {
-		
+		paneContaEditar.setVisible(true);
+	}
+	
+	@FXML
+	protected void confirmarContaEditar() {
+		usuarioLocal.getContas().get(Integer.valueOf(idConta.getText())).setNome(tfNomeContaEditar.getText());
+		usuarioLocal.getContas().get(Integer.valueOf(idConta.getText())).setSaldoAtual(Double.parseDouble(tfSaldoContaEditar.getText()));
+		recarregarListas();
+		paneContaEditar.setVisible(false);
 	}
 	
 	@FXML
 	protected void removerContaSelecionada() {
 		ultimaContaRemovida = usuarioLocal.getContas().get(Integer.valueOf(idConta.getText()));
 		usuarioLocal.removerConta(usuarioLocal.getContas().get(Integer.valueOf(idConta.getText())));
-		tvListaContas.getItems().remove(Integer.valueOf(idConta.getText()));
 		recarregarListas();		
+		
+		lbDesfazerNomeConta.setText(ultimaContaRemovida.getNome());
+		tooltipAvisoConta.setVisible(true);
 	}
 	
 	@FXML
 	protected void editarReceitaSelecionada() {
+		for (Categoria c : usuarioLocal.getCategorias())
+			cbCategoriaReceitaEditar.getItems().add(c.getNome());
+		for (Conta c : usuarioLocal.getContas())
+			cbContaReceitaEditar.getItems().add(c.getNome());
 		
+		cbRecorrenciaReceitaEditar.getItems().addAll("Nenhuma", "Semanal", "Mensal");
+		paneReceitaEditar.setVisible(true);
+		
+	}
+	
+	@FXML
+	protected void confirmarDespesaEditar() {
+		
+	}
+
+	@FXML
+	protected void confirmarReceitaEditar() {
+		
+	}
+	
+	@FXML
+	protected void cancelarDespesaEditar() {
+		paneDespesaEditar.setVisible(false);
+		recarregarListas();
+	}
+		
+	@FXML
+	protected void cancelarReceitaEditar() {
+		paneReceitaEditar.setVisible(false);
+		recarregarListas();
 	}
 	
 	@FXML
@@ -421,6 +563,8 @@ public class PainelPrincipalController extends PoupazudoController implements
 		ultimaTransacaoRemovida = usuarioLocal.getTransacoes().get(Integer.valueOf(idReceita.getText()));
 		usuarioLocal.removerTransacao(ultimaTransacaoRemovida);
 		recarregarListas();
+		lbDesfazerNomeReceita.setText(ultimaTransacaoRemovida.getNomeTransacao());
+		tooltipAvisoReceita.setVisible(true);
 	}
 	
 	private void recarregarListas() {
@@ -431,44 +575,113 @@ public class PainelPrincipalController extends PoupazudoController implements
 	
 	@FXML
 	protected void editarDespesaSelecionada() {
+		for (Categoria c : usuarioLocal.getCategorias())
+			cbCategoriaDespesaEditar.getItems().add(c.getNome());
+		for (Conta c : usuarioLocal.getContas())
+			cbContaDespesaEditar.getItems().add(c.getNome());
 		
+		cbRecorrenciaDespesaEditar.getItems().addAll("Nenhuma", "Semanal", "Mensal");
+		paneDespesaEditar.setVisible(true);
 	}
 	
 	@FXML
 	protected void removerDespesaSelecionada() {
 		ultimaTransacaoRemovida = usuarioLocal.getTransacoes().get(Integer.valueOf(idDespesa.getText()));
-		//System.out.println(ultimaTransacaoRemovida.getNomeTransacao());
-		
 		usuarioLocal.removerTransacao(ultimaTransacaoRemovida);
-		
-		//usuarioLocal.removerTransacao(usuarioLocal.getTransacoes().get(Integer.valueOf(idDespesa.getText())));
-		recarregarListas();	
+		recarregarListas();
+		lbDesfazerNomeDespesa.setText(ultimaTransacaoRemovida.getNomeTransacao());
+		tooltipAvisoDespesa.setVisible(true);
 	}
 	
 	@FXML
 	protected void desfazerRemoverConta() {
-		
+		usuarioLocal.adicionarConta(ultimaContaRemovida);
+		tvListaContas.getItems().add(ultimaContaRemovida);
+		tooltipAvisoConta.setVisible(false);
+		recarregarListas();
+			
 	}
-	
+		
 	@FXML
 	protected void desfazerRemoverDespesa() {
-		
+		usuarioLocal.adicionarTransacao(ultimaTransacaoRemovida);
+		tvListaDespesas.getItems().add(ultimaTransacaoRemovida);
+		tooltipAvisoDespesa.setVisible(false);
+		recarregarListas();
 	}
 	
 	@FXML
 	protected void desfazerRemoverReceita() {
-		
+		usuarioLocal.adicionarTransacao(ultimaTransacaoRemovida);
+		tvListaReceitas.getItems().add(ultimaTransacaoRemovida);
+		tooltipAvisoReceita.setVisible(false);
+		recarregarListas();
 	}
 	
+	@FXML
+	protected void cancelarContaEditar() {
+		paneContaEditar.setVisible(false);
+	}
+		
 	@FXML
 	protected void carregarCampos() {
 		lbNomeUsuario.setText(usuarioLocal.getNome());
 		lbEmailUsuario.setText(usuarioLocal.getEmail());
-			
 		atualizar();
+		
+		ativarEfeitosSobreComponentes();
+
+	}
+
+	private void ativarEfeitosSobreComponentes() {
+		hlRemoverContaSelecionada.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent mouseEvent) {
+                FadeTransition fadeTransition = new FadeTransition(Duration.seconds(30), tooltipAvisoConta);
+                fadeTransition.setFromValue(1.0);
+                fadeTransition.setToValue(0.0);
+                fadeTransition.play();
+                fadeTransition.setOnFinished(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                    	tooltipAvisoConta.setVisible(false);
+                    }
+                });
+            }
+        });
+		
+		hlRemoverDespesaSelecionada.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent mouseEvent) {
+                FadeTransition fadeTransition = new FadeTransition(Duration.seconds(30), tooltipAvisoDespesa);
+                fadeTransition.setFromValue(1.0);
+                fadeTransition.setToValue(0.0);
+                fadeTransition.play();
+                fadeTransition.setOnFinished(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                    	tooltipAvisoDespesa.setVisible(false);
+                    }
+                });
+            }
+        });
+		
+		hlRemoverReceitaSelecionada.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent mouseEvent) {
+                FadeTransition fadeTransition = new FadeTransition(Duration.seconds(30), tooltipAvisoReceita);
+                fadeTransition.setFromValue(1.0);
+                fadeTransition.setToValue(0.0);
+                fadeTransition.play();
+                fadeTransition.setOnFinished(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                    	tooltipAvisoReceita.setVisible(false);
+                    }
+                });
+            }
+        });
 	}
 
 	private void atualizar() {
+				
 		if (flag) { // Faz com que o tableView Seja carregado apenas uma vez
 			saldoTotal = .0;
 			for (Conta c : usuarioLocal.getContas()) {
@@ -477,11 +690,11 @@ public class PainelPrincipalController extends PoupazudoController implements
 			}
 
 			tvListaContas.setItems(listaContas);
-			lbValorSaldo.setText(Numero.formato(saldoTotal));
-
+		
 			for (Transacao transacao : usuarioLocal.getTransacoes()) {
 				if (transacao.getTipo() == TipoTransacao.DESPESA) {
 					listaDespesas.add(transacao);
+					saldoTotal -= transacao.getSaldoAtualTransacao();
 				} else {
 					listaReceitas.add(transacao);
 				}
@@ -494,6 +707,8 @@ public class PainelPrincipalController extends PoupazudoController implements
 			
 			flag = false;
 		}
+		
+		lbValorSaldo.setText(Numero.formato(saldoTotal));
 	}
 
 	private void clean() {
@@ -504,6 +719,12 @@ public class PainelPrincipalController extends PoupazudoController implements
 		listaContas.clear();
 		listaDespesas.clear();
 		listaReceitas.clear();
+		cbCategoriaDespesaEditar.getItems().clear();
+		cbContaDespesaEditar.getItems().clear();
+		cbRecorrenciaDespesaEditar.getItems().clear();
+		cbCategoriaReceitaEditar.getItems().clear();
+		cbContaReceitaEditar.getItems().clear();
+		cbRecorrenciaReceitaEditar.getItems().clear();
 		lcRelatorio.getData().clear();
 	}
 
@@ -529,7 +750,5 @@ public class PainelPrincipalController extends PoupazudoController implements
 	protected void gotoConfirmarSair() {
 		clean();
 		controlador.setTela(TipoTela.TELA_DE_LOGIN);
-		// Stage stage = (Stage) hlSair.getScene().getWindow();
-		// stage.close();
 	}
 }
