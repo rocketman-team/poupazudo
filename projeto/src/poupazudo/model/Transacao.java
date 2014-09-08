@@ -1,9 +1,5 @@
 package poupazudo.model;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import poupazudo.enuns.TipoRecorrencia;

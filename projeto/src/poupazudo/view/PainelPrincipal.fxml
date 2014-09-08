@@ -213,21 +213,51 @@
                                     <TextArea fx:id="taDespesaDescricaoSelecionado" editable="false" layoutX="16.0" layoutY="321.0" prefHeight="127.0" prefWidth="200.0" wrapText="true" />
                                     <Label layoutX="54.0" layoutY="506.0" text="/" textFill="#a4cdd7" />
                                     <Label fx:id="idDespesa" layoutX="150.0" layoutY="200.0" text="ID" visible="false" />
-                                    <Pane fx:id="paneDespesaEditar" layoutX="2.0" layoutY="48.0" prefHeight="474.0" prefWidth="214.0" style="-fx-background-color: #ffffff;" visible="false">
+                                    <Pane fx:id="paneDespesaEditar" layoutY="45.0" prefHeight="490.0" prefWidth="214.0" style="-fx-background-color: #ffffff;" visible="false">
                                        <children>
-                                          <Label layoutX="22.0" layoutY="10.0" text="Editar Despesa">
+                                          <Label layoutX="24.0" layoutY="10.0" text="Editar Despesa">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="tfNomeDespesaEditar" layoutX="24.0" layoutY="47.0" promptText="Nome da Despesa" />
-                                          <TextField fx:id="tfSaldoDespesaEditar" layoutX="23.0" layoutY="88.0" promptText="Valor do saldo" />
+                                          <TextField fx:id="tfNomeDespesaEditar" layoutX="24.0" layoutY="54.0" promptText="Nome da Despesa" />
+                                          <TextField fx:id="tfSaldoDespesaEditar" layoutX="23.0" layoutY="102.0" promptText="Valor do saldo" />
                                           <Button fx:id="btnConfirmarDespesaEditar" layoutX="90.0" layoutY="439.0" mnemonicParsing="false" onAction="#confirmarDespesaEditar" prefHeight="25.0" prefWidth="80.0" text="Confirmar" />
                                           <Hyperlink fx:id="hlCancelarDespesaEditar" layoutX="23.0" layoutY="440.0" onAction="#cancelarDespesaEditar" text="Cancelar" />
-                                          <ComboBox fx:id="cbCategoriaDespesaEditar" layoutX="23.0" layoutY="129.0" prefWidth="150.0" promptText="Categoria" />
-                                          <ComboBox fx:id="cbContaDespesaEditar" layoutX="23.0" layoutY="170.0" prefWidth="150.0" promptText="Conta" />
-                                          <ComboBox fx:id="cbRecorrenciaDespesaEditar" layoutX="23.0" layoutY="212.0" prefWidth="150.0" promptText="Recorrência" />
-                                          <TextArea fx:id="taDescricaoDespesaEditar" layoutX="23.0" layoutY="254.0" prefHeight="162.0" prefWidth="175.0" promptText="Descrição" />
+                                          <ComboBox fx:id="cbCategoriaDespesaEditar" layoutX="23.0" layoutY="151.0" prefWidth="150.0" promptText="Categoria" />
+                                          <ComboBox fx:id="cbContaDespesaEditar" layoutX="23.0" layoutY="198.0" prefWidth="150.0" promptText="Conta" />
+                                          <ComboBox fx:id="cbRecorrenciaDespesaEditar" layoutX="23.0" layoutY="246.0" prefWidth="150.0" promptText="Recorrência" />
+                                          <TextArea fx:id="taDescricaoDespesaEditar" layoutX="23.0" layoutY="295.0" prefHeight="114.0" prefWidth="175.0" promptText="Descrição" wrapText="true" />
+                                          <Label layoutX="24.0" layoutY="278.0" text="Descrição" textFill="#979797">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="24.0" layoutY="231.0" text="Recorrência" textFill="#979797">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="24.0" layoutY="184.0" text="Conta" textFill="#979797">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="24.0" layoutY="136.0" text="Categoria" textFill="#979797">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="24.0" layoutY="87.0" text="Valor do saldo" textFill="#979797">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="24.0" layoutY="38.0" text="Nome da despesa" textFill="#979797">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
                                        </children>
                                     </Pane>
                                  </children>
@@ -338,21 +368,51 @@
                                     <TextArea fx:id="taReceitaDescricaoSelecionado" editable="false" layoutX="16.0" layoutY="321.0" prefHeight="127.0" prefWidth="200.0" wrapText="true" />
                                     <Label layoutX="57.0" layoutY="516.0" text="/" textFill="#a4cdd7" />
                                     <Label fx:id="idReceita" layoutX="136.0" layoutY="185.0" text="ID" visible="false" />
-                                    <Pane fx:id="paneReceitaEditar" layoutY="51.0" prefHeight="495.0" prefWidth="214.0" style="-fx-background-color: #ffffff;" visible="false">
+                                    <Pane fx:id="paneReceitaEditar" layoutY="45.0" prefHeight="498.0" prefWidth="214.0" style="-fx-background-color: #ffffff;" visible="false">
                                        <children>
-                                          <Label layoutX="22.0" layoutY="10.0" text="Editar Receita">
+                                          <Label layoutX="24.0" layoutY="10.0" text="Editar Receita">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="tfNomeReceitaEditar" layoutX="24.0" layoutY="47.0" promptText="Nome da Despesa" />
-                                          <TextField fx:id="tfSaldoReceitaEditar" layoutX="23.0" layoutY="88.0" promptText="Valor do saldo" />
+                                          <TextField fx:id="tfNomeReceitaEditar" layoutX="24.0" layoutY="54.0" promptText="Nome da Despesa" />
+                                          <TextField fx:id="tfSaldoReceitaEditar" layoutX="23.0" layoutY="102.0" promptText="Valor do saldo" />
                                           <Button fx:id="btnConfirmarReceitaEditar" layoutX="90.0" layoutY="439.0" mnemonicParsing="false" onAction="#confirmarReceitaEditar" prefHeight="25.0" prefWidth="80.0" text="Confirmar" />
                                           <Hyperlink fx:id="hlCancelarReceitaEditar" layoutX="23.0" layoutY="440.0" onAction="#cancelarReceitaEditar" text="Cancelar" />
-                                          <ComboBox fx:id="cbCategoriaReceitaEditar" layoutX="23.0" layoutY="129.0" prefWidth="150.0" promptText="Categoria" />
-                                          <ComboBox fx:id="cbContaReceitaEditar" layoutX="23.0" layoutY="170.0" prefWidth="150.0" promptText="Conta" />
-                                          <ComboBox fx:id="cbRecorrenciaReceitaEditar" layoutX="23.0" layoutY="212.0" prefWidth="150.0" promptText="Recorrência" />
-                                          <TextArea fx:id="taDescricaoReceitaEditar" layoutX="23.0" layoutY="254.0" prefHeight="162.0" prefWidth="175.0" promptText="Descrição" />
+                                          <ComboBox fx:id="cbCategoriaReceitaEditar" layoutX="23.0" layoutY="151.0" prefWidth="150.0" promptText="Categoria" />
+                                          <ComboBox fx:id="cbContaReceitaEditar" layoutX="23.0" layoutY="198.0" prefWidth="150.0" promptText="Conta" />
+                                          <ComboBox fx:id="cbRecorrenciaReceitaEditar" layoutX="23.0" layoutY="246.0" prefWidth="150.0" promptText="Recorrência" />
+                                          <TextArea fx:id="taDescricaoReceitaEditar" layoutX="23.0" layoutY="295.0" prefHeight="114.0" prefWidth="175.0" promptText="Descrição" wrapText="true" />
+                                          <Label layoutX="24.0" layoutY="278.0" text="Descrição" textFill="#979797">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="24.0" layoutY="231.0" text="Recorrência" textFill="#979797">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="24.0" layoutY="184.0" text="Conta" textFill="#979797">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="24.0" layoutY="136.0" text="Categoria" textFill="#979797">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="24.0" layoutY="87.0" text="Valor do saldo" textFill="#979797">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="24.0" layoutY="38.0" text="Nome da despesa" textFill="#979797">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
                                        </children>
                                     </Pane>
                                  </children>

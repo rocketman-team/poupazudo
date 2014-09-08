@@ -31,6 +31,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import poupazudo.enuns.TipoRecorrencia;
 import poupazudo.enuns.TipoTela;
 import poupazudo.enuns.TipoTransacao;
 import poupazudo.exceptions.UsuarioJaExisteException;
@@ -512,6 +513,8 @@ public class PainelPrincipalController extends PoupazudoController implements
 		usuarioLocal.getContas().get(Integer.valueOf(idConta.getText())).setSaldoAtual(Double.parseDouble(tfSaldoContaEditar.getText()));
 		recarregarListas();
 		paneContaEditar.setVisible(false);
+		clean();
+		controlador.setTela(TipoTela.TELA_TRANSICAO);
 	}
 	
 	@FXML
@@ -539,11 +542,77 @@ public class PainelPrincipalController extends PoupazudoController implements
 	@FXML
 	protected void confirmarDespesaEditar() {
 		
+		usuarioLocal.getTransacoes().get(Integer.parseInt(idDespesa.getText()))
+			.setSaldoAtualTransacao(Double.valueOf(tfSaldoDespesaEditar.getText()));
+		
+		usuarioLocal.getTransacoes().get(Integer.parseInt(idDespesa.getText()))
+		.setNomeTransacao(tfNomeDespesaEditar.getText());
+		
+		if (cbCategoriaDespesaEditar.getValue() != null)
+			usuarioLocal.getTransacoes().get(Integer.parseInt(idDespesa.getText()))
+			.setCategoriaTransacao(cbCategoriaDespesaEditar.getValue());
+		
+		if (cbContaDespesaEditar.getValue() != null)
+			usuarioLocal.getTransacoes().get(Integer.parseInt(idDespesa.getText()))
+			.setConta(cbContaDespesaEditar.getValue());
+		
+		usuarioLocal.getTransacoes().get(Integer.parseInt(idDespesa.getText()))
+		.setDescricao(taDescricaoDespesaEditar.getText());
+		
+		if (cbRecorrenciaDespesaEditar.getValue() != null)
+			if (cbRecorrenciaDespesaEditar.getValue().equals("Semanal")) {
+				usuarioLocal.getTransacoes().get(Integer.parseInt(idDespesa.getText()))
+				.setRecorrencia(TipoRecorrencia.SEMANAL);	
+			} else if (cbRecorrenciaDespesaEditar.getValue().equals("Mensal")) {
+				usuarioLocal.getTransacoes().get(Integer.parseInt(idDespesa.getText()))
+				.setRecorrencia(TipoRecorrencia.MENSAL);
+			} else {
+				usuarioLocal.getTransacoes().get(Integer.parseInt(idDespesa.getText()))
+				.setRecorrencia(TipoRecorrencia.NENHUMA);
+			}
+		
+		recarregarListas();
+		clean();
+		paneDespesaEditar.setVisible(false);
+		controlador.setTela(TipoTela.TELA_TRANSICAO);
 	}
 
 	@FXML
 	protected void confirmarReceitaEditar() {
 		
+		usuarioLocal.getTransacoes().get(Integer.parseInt(idReceita.getText()))
+			.setSaldoAtualTransacao(Double.valueOf(tfSaldoDespesaEditar.getText()));
+		
+		usuarioLocal.getTransacoes().get(Integer.parseInt(idReceita.getText()))
+		.setNomeTransacao(tfNomeReceitaEditar.getText());
+		
+		if (cbCategoriaReceitaEditar.getValue() != null)
+			usuarioLocal.getTransacoes().get(Integer.parseInt(idReceita.getText()))
+			.setCategoriaTransacao(cbCategoriaReceitaEditar.getValue());
+		
+		if (cbContaReceitaEditar.getValue() != null)
+			usuarioLocal.getTransacoes().get(Integer.parseInt(idReceita.getText()))
+			.setConta(cbContaReceitaEditar.getValue());
+		
+		usuarioLocal.getTransacoes().get(Integer.parseInt(idReceita.getText()))
+		.setDescricao(taDescricaoReceitaEditar.getText());
+		
+		if (cbRecorrenciaReceitaEditar.getValue() != null)
+			if (cbRecorrenciaReceitaEditar.getValue().equals("Semanal")) {
+				usuarioLocal.getTransacoes().get(Integer.parseInt(idReceita.getText()))
+				.setRecorrencia(TipoRecorrencia.SEMANAL);	
+			} else if (cbRecorrenciaReceitaEditar.getValue().equals("Mensal")) {
+				usuarioLocal.getTransacoes().get(Integer.parseInt(idReceita.getText()))
+				.setRecorrencia(TipoRecorrencia.MENSAL);
+			} else {
+				usuarioLocal.getTransacoes().get(Integer.parseInt(idReceita.getText()))
+				.setRecorrencia(TipoRecorrencia.NENHUMA);
+			}
+		
+		recarregarListas();
+		clean();
+		paneReceitaEditar.setVisible(false);
+		controlador.setTela(TipoTela.TELA_TRANSICAO);
 	}
 	
 	@FXML
