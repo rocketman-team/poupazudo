@@ -6,7 +6,7 @@ import java.util.List;
 import poupazudo.exceptions.EmailIncorretoException;
 import poupazudo.exceptions.NomeIncorretoException;
 import poupazudo.exceptions.SenhaInseguraException;
-import poupazudo.util.Email;
+import poupazudo.util.Mail;
 
 /**
  * Classe que representa o usuário
@@ -135,7 +135,7 @@ public class Usuario {
 	 */
 	private void checaEmail(String email) throws EmailIncorretoException {
 
-		if (!Email.vericaEmail(email))
+		if (!Mail.vericaEmail(email))
 			throw new EmailIncorretoException();
 
 	}

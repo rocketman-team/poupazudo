@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * A classe Arquivo possui funcoes utilitaias pra manipular um arquivo do tipo
+ * A classe Arquivo possui funcoes utilitarias pra manipular um arquivo do tipo
  * json usando a biblioteca Gson escrita pelo google.
  * 
  * @author team
@@ -29,6 +29,13 @@ public class Arquivo {
 	
 	private static final String TEMP = "..//projeto//dat//tmp.json";
 
+	/*
+	private static final String DATA = "bd//data.json"; //"..//projeto//dat//data.json";
+	
+	private static final String TEMP = "bd//tmp.json"; //"..//projeto//dat//tmp.json";
+	
+	*/
+	
 	/**
 	 * Permite preparar um arquivo para escrita em arquivo
 	 */

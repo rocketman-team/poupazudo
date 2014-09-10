@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import poupazudo.enuns.TipoTela;
+import poupazudo.util.Mail;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -39,11 +40,18 @@ public class RecuperarSenhaController extends PoupazudoController implements Ini
 	
 	@FXML
 	protected void recuperarSenha() {
+		btnRecuperarSenha.setDisable(true);
+		if (Mail.vericaEmail(tfSenha.getText())) {
+			String novaSenha = Mail.enviarEmail(tfSenha.getText(), poupazudo.pesquisar(tfSenha.getText()).getNome());
+			poupazudo.pesquisar(tfSenha.getText()).setSenha(novaSenha);
+			poupazudo.atualizar();
+		}
 		paneSolicitacaoEnviada.setVisible(true);
 	}
 	
 	@FXML
 	protected void gotoTelaLogin() {
+		paneSolicitacaoEnviada.setVisible(false);
 		controlador.setTela(TipoTela.TELA_DE_LOGIN);
 	}
 	

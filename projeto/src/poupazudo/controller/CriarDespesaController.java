@@ -1,6 +1,9 @@
 package poupazudo.controller;
 
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -111,6 +114,9 @@ public class CriarDespesaController extends PoupazudoController implements
 	public void initialize(URL location, ResourceBundle resources) {
 
 		habilitarFormDespesa();
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = new Date();
+		tfDataDespesa.setText(dateFormat.format(date));
 	}
 
 	@FXML

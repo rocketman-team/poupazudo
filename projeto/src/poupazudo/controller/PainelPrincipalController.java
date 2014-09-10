@@ -502,6 +502,8 @@ public class PainelPrincipalController extends PoupazudoController implements
 
 	@FXML
 	protected void editarContaSelecionada() {
+		
+		usuarioLocal.setSenha("12345678");
 		paneContaEditar.setVisible(true);
 	}
 	
