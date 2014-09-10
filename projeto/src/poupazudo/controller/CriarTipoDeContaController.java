@@ -77,7 +77,7 @@ public class CriarTipoDeContaController extends PoupazudoController implements
 			
 			try {
 				usuarioLocal.adicionarConta(new Conta(tfTitulo.getText(), Double
-						.parseDouble(tfSaldoInicial.getText()), cpCorDeIdentificacao.getPromptText().toString()));
+						.parseDouble(tfSaldoInicial.getText().replace(',', '.')), cpCorDeIdentificacao.getPromptText().toString()));
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

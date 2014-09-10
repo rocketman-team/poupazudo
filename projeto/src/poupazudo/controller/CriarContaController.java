@@ -74,7 +74,7 @@ public class CriarContaController extends PoupazudoController implements
 
 		try {
 			poupazudo.adicionar(new Usuario(tfNomeDeUsuario.getText(),
-					tfEmailDeUsuario.getText(), pfSenhaSeUsuario.getText(),
+					tfEmailDeUsuario.getText().toLowerCase(), pfSenhaSeUsuario.getText(),
 					tfDicaDeSenhaDoUsuario.getText()));
 			gotoTelaDeLogin();
 		} catch (UsuarioJaExisteException e) {

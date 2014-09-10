@@ -25,17 +25,11 @@ public class Arquivo {
 	/**
 	 * Caminho do arquivo onde sera persistido o json dos dados
 	 */
-	private static final String DATA = "..//projeto//dat//data.json";
+	/* configurado no eclipse*/
+	private static final String DATA = Recursos.LOCAL_DADOS;
 	
-	private static final String TEMP = "..//projeto//dat//tmp.json";
-
-	/*
-	private static final String DATA = "bd//data.json"; //"..//projeto//dat//data.json";
-	
-	private static final String TEMP = "bd//tmp.json"; //"..//projeto//dat//tmp.json";
-	
-	*/
-	
+	private static final String TEMP = Recursos.LOCAL_DADOS_TMP;
+     
 	/**
 	 * Permite preparar um arquivo para escrita em arquivo
 	 */

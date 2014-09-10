@@ -40,12 +40,13 @@ public class RecuperarSenhaController extends PoupazudoController implements Ini
 	
 	@FXML
 	protected void recuperarSenha() {
-		btnRecuperarSenha.setDisable(true);
 		if (Mail.vericaEmail(tfSenha.getText())) {
+			btnRecuperarSenha.setDisable(true);
 			String novaSenha = Mail.enviarEmail(tfSenha.getText(), poupazudo.pesquisar(tfSenha.getText()).getNome());
 			poupazudo.pesquisar(tfSenha.getText()).setSenha(novaSenha);
 			poupazudo.atualizar();
 		}
+		btnRecuperarSenha.setDisable(false);
 		paneSolicitacaoEnviada.setVisible(true);
 	}
 	

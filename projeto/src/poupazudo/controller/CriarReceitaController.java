@@ -1,6 +1,9 @@
 package poupazudo.controller;
 
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -21,6 +24,7 @@ import poupazudo.enuns.TipoTela;
 import poupazudo.model.Categoria;
 import poupazudo.model.Receita;
 import poupazudo.util.Filtro;
+import poupazudo.util.Recursos;
 
 public class CriarReceitaController extends PoupazudoController implements
 		Initializable, TelasController {
@@ -112,6 +116,12 @@ public class CriarReceitaController extends PoupazudoController implements
 
 		habilitarFormReceita();
 		
+		DateFormat dateFormat = new SimpleDateFormat(Recursos.FORMATO_DATA);
+		Date date = new Date();
+		tfDataReceita.setText(dateFormat.format(date));
+		
+		cbCategoria.getItems().addAll(Recursos.CATEGORIAS);
+		cbConta.getItems().addAll(Recursos.CONTAS);
 	}
 
 	@Override
@@ -137,17 +147,12 @@ public class CriarReceitaController extends PoupazudoController implements
 		controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 	}
 
-
 	@FXML
 	protected void gotoConfirmarCriarReceita() {
 
 		Receita receita = new Receita(tfNomeReceita.getText(),
-				Double.parseDouble(tfValorReceita.getText()),
+				Double.parseDouble(tfValorReceita.getText().replace(',', '.')),
 				cbCategoria.getValue());
-		
-		receita.setConta(cbConta.getValue());
-		receita.setDescricao(taDescricao.getText());
-		receita.setData(tfDataReceita.getText());
 		
 		if (slRecorrenciaReceita.getValue() >= 0 && slRecorrenciaReceita.getValue() < 0.5) {
 			receita.setRecorrencia(TipoRecorrencia.NENHUMA);
@@ -157,9 +162,13 @@ public class CriarReceitaController extends PoupazudoController implements
 			receita.setRecorrencia(TipoRecorrencia.SEMANAL);
 		}
 		
+		receita.setDescricao(taDescricao.getText());
+		receita.setData(tfDataReceita.getText());
+		
 		usuarioLocal.adicionarTransacao(receita);
 
 		salvar();
+		clean();
 		controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 	}
 
@@ -180,10 +189,10 @@ public class CriarReceitaController extends PoupazudoController implements
 	private void clean() {
 		cbConta.getItems().clear();
 		cbCategoria.getItems().clear();
-		tfDataReceita.clear();
 		tfNomeReceita.clear();
 		tfNovaCategoria.clear();
 		tfValorReceita.clear();
+		taDescricao.clear();
 		flag = true;
 		carregarDados();
 	}

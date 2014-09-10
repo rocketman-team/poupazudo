@@ -24,6 +24,7 @@ import poupazudo.enuns.TipoTela;
 import poupazudo.model.Categoria;
 import poupazudo.model.Despesa;
 import poupazudo.util.Filtro;
+import poupazudo.util.Recursos;
 
 public class CriarDespesaController extends PoupazudoController implements
 		Initializable, TelasController {
@@ -114,9 +115,11 @@ public class CriarDespesaController extends PoupazudoController implements
 	public void initialize(URL location, ResourceBundle resources) {
 
 		habilitarFormDespesa();
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat dateFormat = new SimpleDateFormat(Recursos.FORMATO_DATA);
 		Date date = new Date();
+		
 		tfDataDespesa.setText(dateFormat.format(date));
+		cbCategoria.getItems().addAll(Recursos.CATEGORIAS);
 	}
 
 	@FXML
@@ -133,10 +136,10 @@ public class CriarDespesaController extends PoupazudoController implements
 	private void clean() {
 		cbConta.getItems().clear();
 		cbCategoria.getItems().clear();
-		tfDataDespesa.clear();
 		tfNomeDespesa.clear();
 		tfNovaCategoria.clear();
 		tfValorDespesa.clear();
+		taDescricao.clear();
 		flag = true;
 		carregarDados();
 	}
@@ -169,14 +172,15 @@ public class CriarDespesaController extends PoupazudoController implements
 		//Tratar erros aqui ..
 		
 		Despesa despesa = new Despesa(tfNomeDespesa.getText(),
-				Double.parseDouble(tfValorDespesa.getText()),
+				Double.parseDouble(tfValorDespesa.getText().replace(',', '.')),
 				cbCategoria.getValue());
 
-		despesa.setConta(cbConta.getValue());
-		
-		usuarioLocal.pesquisarConta(cbConta.getValue()).setSaldoAtual(
-				usuarioLocal.pesquisarConta(cbConta.getValue()).getSaldoAtual() - despesa.getSaldoAtualTransacao());
-		
+		if (cbConta.getValue() != null) {
+			despesa.setConta(cbConta.getValue());
+			usuarioLocal.pesquisarConta(cbConta.getValue()).setSaldoAtual(
+				usuarioLocal.pesquisarConta(cbConta.getValue()).getSaldoAtual() - despesa.getSaldoAtualTransacao());			
+		}
+
 		despesa.setDescricao(taDescricao.getText());
 		despesa.setData(tfDataDespesa.getText());
 
@@ -191,6 +195,7 @@ public class CriarDespesaController extends PoupazudoController implements
 		usuarioLocal.adicionarTransacao(despesa);
 
 		salvar();
+		clean();
 		controlador.setTela(TipoTela.TELA_PAINEL_PRINCIPAL);
 	}
 

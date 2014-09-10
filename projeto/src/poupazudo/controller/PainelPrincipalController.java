@@ -38,6 +38,7 @@ import poupazudo.model.Conta;
 import poupazudo.model.Transacao;
 import poupazudo.util.Data;
 import poupazudo.util.Numero;
+import poupazudo.util.Recursos;
 
 public class PainelPrincipalController extends PoupazudoController implements
 		Initializable, TelasController {
@@ -201,6 +202,9 @@ public class PainelPrincipalController extends PoupazudoController implements
 	private Pane tooltipAvisoReceita;
 	
 	@FXML
+	private ComboBox<String> cbRelatorioModo;
+	
+	@FXML
 	private ComboBox<String> cbCategoriaDespesaEditar;
 	
 	@FXML
@@ -336,6 +340,7 @@ public class PainelPrincipalController extends PoupazudoController implements
 		tooltipAvisoConta.setVisible(false);
 		tooltipAvisoDespesa.setVisible(false);
 		tooltipAvisoReceita.setVisible(false);
+		cbRelatorioModo.getItems().addAll("Histograma", "Listagem");
 		
 	}
 
@@ -502,8 +507,6 @@ public class PainelPrincipalController extends PoupazudoController implements
 
 	@FXML
 	protected void editarContaSelecionada() {
-		
-		usuarioLocal.setSenha("12345678");
 		paneContaEditar.setVisible(true);
 	}
 	
@@ -529,6 +532,8 @@ public class PainelPrincipalController extends PoupazudoController implements
 	
 	@FXML
 	protected void editarReceitaSelecionada() {
+		cbCategoriaReceitaEditar.getItems().addAll(Recursos.CATEGORIAS);
+		cbContaReceitaEditar.getItems().addAll(Recursos.CONTAS);
 		for (Categoria c : usuarioLocal.getCategorias())
 			cbCategoriaReceitaEditar.getItems().add(c.getNome());
 		for (Conta c : usuarioLocal.getContas())
@@ -644,6 +649,9 @@ public class PainelPrincipalController extends PoupazudoController implements
 	
 	@FXML
 	protected void editarDespesaSelecionada() {
+		cbCategoriaDespesaEditar.getItems().addAll(Recursos.CATEGORIAS);
+		cbContaDespesaEditar.getItems().addAll(Recursos.CONTAS);
+		
 		for (Categoria c : usuarioLocal.getCategorias())
 			cbCategoriaDespesaEditar.getItems().add(c.getNome());
 		for (Conta c : usuarioLocal.getContas())
