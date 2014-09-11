@@ -119,12 +119,13 @@ public class CriarDespesaController extends PoupazudoController implements
 		Date date = new Date();
 		
 		tfDataDespesa.setText(dateFormat.format(date));
-		cbCategoria.getItems().addAll(Recursos.CATEGORIAS);
+		
 	}
 
 	@FXML
 	protected void carregarDados() {
 		if (flag) {
+			cbCategoria.getItems().addAll(Recursos.CATEGORIAS);
 			cbConta.getItems().addAll(
 					Filtro.filtroConta(usuarioLocal.getContas()));
 			cbCategoria.getItems().addAll(
@@ -178,11 +179,15 @@ public class CriarDespesaController extends PoupazudoController implements
 		if (cbConta.getValue() != null) {
 			despesa.setConta(cbConta.getValue());
 			usuarioLocal.pesquisarConta(cbConta.getValue()).setSaldoAtual(
-				usuarioLocal.pesquisarConta(cbConta.getValue()).getSaldoAtual() - despesa.getSaldoAtualTransacao());			
+					
+				usuarioLocal.pesquisarConta(cbConta.getValue()).getSaldoAtual() - despesa.getSaldoAtualTransacao()
+				
+					);			
 		}
 
 		despesa.setDescricao(taDescricao.getText());
 		despesa.setData(tfDataDespesa.getText());
+		despesa.setCorTransacao(cpCorCategoria.getStyle());
 
 		if (slRecorrenciaDespesa.getValue() >= 0 && slRecorrenciaDespesa.getValue() < 0.5) {
 			despesa.setRecorrencia(TipoRecorrencia.NENHUMA);

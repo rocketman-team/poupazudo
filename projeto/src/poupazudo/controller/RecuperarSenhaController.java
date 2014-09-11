@@ -3,14 +3,15 @@ package poupazudo.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import poupazudo.enuns.TipoTela;
-import poupazudo.util.Mail;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import poupazudo.enuns.TipoTela;
+import poupazudo.util.Mail;
 
 public class RecuperarSenhaController extends PoupazudoController implements Initializable, TelasController {
 
@@ -28,6 +29,9 @@ public class RecuperarSenhaController extends PoupazudoController implements Ini
 	@FXML
 	private Pane paneSolicitacaoEnviada;
 	
+	@FXML
+	private Label lbRecuperarSenha;
+	
 	@Override
 	public void setTela(Tela tela) {
 		controlador = tela;
@@ -36,17 +40,19 @@ public class RecuperarSenhaController extends PoupazudoController implements Ini
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		paneSolicitacaoEnviada.setVisible(false);
+		lbRecuperarSenha.setText("Recuperar senha");
 	}
 	
 	@FXML
 	protected void recuperarSenha() {
+		lbRecuperarSenha.setText("Enviando ...");
+		
 		if (Mail.vericaEmail(tfSenha.getText())) {
-			btnRecuperarSenha.setDisable(true);
 			String novaSenha = Mail.enviarEmail(tfSenha.getText(), poupazudo.pesquisar(tfSenha.getText()).getNome());
 			poupazudo.pesquisar(tfSenha.getText()).setSenha(novaSenha);
 			poupazudo.atualizar();
+			
 		}
-		btnRecuperarSenha.setDisable(false);
 		paneSolicitacaoEnviada.setVisible(true);
 	}
 	

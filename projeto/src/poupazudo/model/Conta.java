@@ -1,5 +1,8 @@
 package poupazudo.model;
 
+import poupazudo.exceptions.CorInvalidaException;
+import poupazudo.exceptions.NomeIncorretoException;
+import poupazudo.exceptions.SaldoInvalidoException;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -13,14 +16,14 @@ public class Conta {
 	
 	private SimpleDoubleProperty saldoAtual;
 
-	public Conta(String nome, double saldo, String cor) throws Exception{
+	public Conta(String nome, double saldo, String cor) throws Exception {
 		
-		if (nome == null)
-			throw new Exception("Nome inválido.");
+		if (nome == "")
+			throw new NomeIncorretoException();
 		if (saldo < 0)
-			throw new Exception ("Saldo inválido");
+			throw new SaldoInvalidoException();
 		if (cor == null)
-			throw new Exception("Cor inválida.");
+			throw new CorInvalidaException();
 		
 		this.cor = new SimpleStringProperty(cor);
 		this.nome = new SimpleStringProperty(nome);

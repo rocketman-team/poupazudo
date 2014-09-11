@@ -23,10 +23,10 @@
                         <TextField fx:id="tfValorReceita" alignment="CENTER_RIGHT" layoutX="14.0" layoutY="172.0" prefHeight="25.0" prefWidth="190.0" />
                         <Label layoutX="14.0" layoutY="151.0" text="Valor da Receita" />
                         <Label layoutX="14.0" layoutY="211.0" text="Categoria" />
-                        <ComboBox fx:id="cbCategoria" layoutX="14.0" layoutY="233.0" prefHeight="25.0" prefWidth="190.0" />
+                        <ComboBox fx:id="cbCategoria" layoutX="14.0" layoutY="233.0" prefHeight="25.0" prefWidth="190.0" promptText="Selecione uma categoria" />
                         <Hyperlink fx:id="hlAdicionarCategoria" layoutX="116.0" layoutY="259.0" onAction="#criarNovaCategoria" text="Adicionar Nova" />
-                        <Hyperlink fx:id="hlAdicionarConta" layoutX="115.0" layoutY="341.0" onAction="#criarNovaConta" text="Adicionar Nova" />
-                        <ComboBox fx:id="cbConta" layoutX="13.0" layoutY="315.0" prefHeight="25.0" prefWidth="190.0" />
+                        <Hyperlink fx:id="hlAdicionarConta" layoutX="115.0" layoutY="341.0" onAction="#criarNovaConta" text="Adicionar Nova" visible="false" />
+                        <ComboBox fx:id="cbConta" layoutX="13.0" layoutY="315.0" prefHeight="25.0" prefWidth="190.0" promptText="Selecione uma conta" />
                         <Label layoutX="13.0" layoutY="293.0" text="Conta" />
                         <RadioButton fx:id="rbReceitaFixa" layoutX="16.0" layoutY="387.0" mnemonicParsing="false" onAction="#toggleReceitaFixa" selected="true" text="Receita fixa">
                            <toggleGroup>

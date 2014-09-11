@@ -21,6 +21,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -28,6 +29,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.util.Callback;
 import javafx.util.Duration;
 import poupazudo.enuns.TipoRecorrencia;
 import poupazudo.enuns.TipoTela;
@@ -433,6 +436,7 @@ public class PainelPrincipalController extends PoupazudoController implements
 						}
 					}
 				});
+	
 	}
 
 	private void observarTabelaDespesas() {
@@ -533,7 +537,6 @@ public class PainelPrincipalController extends PoupazudoController implements
 	@FXML
 	protected void editarReceitaSelecionada() {
 		cbCategoriaReceitaEditar.getItems().addAll(Recursos.CATEGORIAS);
-		cbContaReceitaEditar.getItems().addAll(Recursos.CONTAS);
 		for (Categoria c : usuarioLocal.getCategorias())
 			cbCategoriaReceitaEditar.getItems().add(c.getNome());
 		for (Conta c : usuarioLocal.getContas())
@@ -650,8 +653,7 @@ public class PainelPrincipalController extends PoupazudoController implements
 	@FXML
 	protected void editarDespesaSelecionada() {
 		cbCategoriaDespesaEditar.getItems().addAll(Recursos.CATEGORIAS);
-		cbContaDespesaEditar.getItems().addAll(Recursos.CONTAS);
-		
+	
 		for (Categoria c : usuarioLocal.getCategorias())
 			cbCategoriaDespesaEditar.getItems().add(c.getNome());
 		for (Conta c : usuarioLocal.getContas())

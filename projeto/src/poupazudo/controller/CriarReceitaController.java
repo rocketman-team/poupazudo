@@ -119,9 +119,7 @@ public class CriarReceitaController extends PoupazudoController implements
 		DateFormat dateFormat = new SimpleDateFormat(Recursos.FORMATO_DATA);
 		Date date = new Date();
 		tfDataReceita.setText(dateFormat.format(date));
-		
-		cbCategoria.getItems().addAll(Recursos.CATEGORIAS);
-		cbConta.getItems().addAll(Recursos.CONTAS);
+
 	}
 
 	@Override
@@ -180,6 +178,8 @@ public class CriarReceitaController extends PoupazudoController implements
 	@FXML
 	protected void carregarDados() {
 		if (flag) {
+			cbConta.getItems().addAll(Recursos.CONTAS);
+			cbCategoria.getItems().addAll(Recursos.CATEGORIAS);
 			cbConta.getItems().addAll(Filtro.filtroConta(usuarioLocal.getContas()));
 			cbCategoria.getItems().addAll(Filtro.filtroCategoria(usuarioLocal.getCategorias()));
 			flag = false;
@@ -187,7 +187,6 @@ public class CriarReceitaController extends PoupazudoController implements
 	}
 	
 	private void clean() {
-		cbConta.getItems().clear();
 		cbCategoria.getItems().clear();
 		tfNomeReceita.clear();
 		tfNovaCategoria.clear();

@@ -20,12 +20,6 @@ public class Mail {
 		return matcher.find();
 	}
 	
-	public static boolean recuperarEmail() {
-		
-
-		return false;
-	}
-	
 	public static String enviarEmail(String destino, String nomeUsuario) {
 		
 		final Email email = new Email();
