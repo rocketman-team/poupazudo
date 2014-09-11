@@ -148,6 +148,12 @@ public class CriarReceitaController extends PoupazudoController implements
 	@FXML
 	protected void gotoConfirmarCriarReceita() {
 
+		if (tfValorReceita.getText().isEmpty())
+			tfValorReceita.setText("0.0");
+		
+		if (tfNomeReceita.getText().isEmpty())
+			tfNomeReceita.setText("Sem Titulo");
+		
 		Receita receita = new Receita(tfNomeReceita.getText(),
 				Double.parseDouble(tfValorReceita.getText().replace(',', '.')),
 				cbCategoria.getValue());

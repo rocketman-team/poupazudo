@@ -170,7 +170,11 @@ public class CriarDespesaController extends PoupazudoController implements
 	@FXML
 	protected void gotoConfirmarCriarDespesa() {
 
-		//Tratar erros aqui ..
+		if (tfValorDespesa.getText().isEmpty())
+			tfValorDespesa.setText("0.0");
+		
+		if (tfNomeDespesa.getText().isEmpty())
+			tfNomeDespesa.setText("Sem Titulo");
 		
 		Despesa despesa = new Despesa(tfNomeDespesa.getText(),
 				Double.parseDouble(tfValorDespesa.getText().replace(',', '.')),
